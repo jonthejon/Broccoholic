@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource {
+class MainRecipeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet weak var recipeCollectionView: UICollectionView!
     
     var recipeArray = [DummyRecipe]()
-//    var dummyRecipe =
     
     
 	override func viewDidLoad() {
@@ -41,7 +42,17 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         cell.recipeNameLabel.text = dummyRecipe.recipeName
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueIdentifier = "showDetail"
         
+        if segue.identifier == segueIdentifier,
+            let destination = segue.destination as? DetailedRecipeViewController,
+            let indexPath = self.recipeCollectionView.indexPathsForSelectedItems?.last {
+            destination.dummyRecipe = recipeArray[indexPath.item]
+        }
     }
 }
+
 
