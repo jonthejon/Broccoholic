@@ -91,9 +91,9 @@ class RecipeAPIManager {
 		let configuration = URLSessionConfiguration.default
 		configuration.waitsForConnectivity = true
 		let session = URLSession(configuration: configuration)
-		let 
-		guard let imageUrl = URL(url) else {
-			return nil
+		guard let imageUrl = URL(string: url) else {
+			callback(nil)
+			return
 		}
 		let downloadTask = session.downloadTask(with: imageUrl) { (url:URL?, response:URLResponse?, error:Error?) in
 			if error != nil {
