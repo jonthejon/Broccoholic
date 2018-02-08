@@ -16,7 +16,12 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// TODO: run the method from the api manager to retrieve data and update the Ui
+		self.apiManager.fetchRecipesFromApi(queryParameter: nil) { (resultArr:[Recipe]) in
+			self.data = resultArr
+			OperationQueue.main.addOperation({
+				self.recipeCollectionView.reloadData()
+			})
+		}
 	}
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,7 +32,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
 		// TODO: this is where we will fetch the image data using Download with the API manager
-        cell.recipeImageView.image = recipe.image
+        cell.recipeImageView.image = UIImage(cgImage: #imageLiteral(resourceName: "roasted_vegetables").cgImage!)
+//        cell.recipeImageView.image = recipe.image
         cell.recipeNameLabel.text = recipe.title
         return cell
     }
