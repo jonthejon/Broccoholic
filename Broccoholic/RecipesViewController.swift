@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainRecipeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class RecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     
@@ -24,7 +24,7 @@ class MainRecipeViewController: UIViewController, UICollectionViewDataSource, UI
         let recipe4 = DummyRecipe(recipeName: "Roasted Vegetables", recipeImage: UIImage(named:"roasted_vegetables")!)
         let recipe5 = DummyRecipe(recipeName: "Spinach Pie", recipeImage: UIImage(named:"spinach_pie")!)
         
-        self.recipeArray = [recipe1, recipe2, recipe3, recipe4, recipe5]
+        recipeArray = [recipe1, recipe2, recipe3, recipe4, recipe5]
 	}
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
