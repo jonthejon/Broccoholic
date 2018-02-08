@@ -19,19 +19,40 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var bookmarkSwitch: UISwitch! //temp switch
     
-    var dummyRecipe: DummyRecipe?
-
     let randomArray = ["text1", "text2", "text3"]
+    var optRecipe: Recipe?
+	var optApiManager: RecipeAPIManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let dummyrecipe = dummyRecipe {
-            
-            recipeNameLabel.text = dummyrecipe.recipeName
-            print(recipeNameLabel.text!)
-            recipeImageView.image = dummyrecipe.recipeImage
-            
+        if let recipe = optRecipe {
+            recipeNameLabel.text = recipe.title
+            recipeImageView.image = recipe.image
+			if recipe.isComplete {
+				print("Fetching from CACHE!!")
+				print("Num of servings: \(recipe.servings!)")
+				print("Ready in: \(recipe.readyInMin!) minutes")
+				print("Num of ingredients: \((recipe.ingredients!).count)")
+				print("Instructions: \(recipe.instructions!)")
+			} else {
+				if let manager = self.optApiManager {
+					manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+						OperationQueue.main.addOperation({
+							recipe.servings = result.servings
+							recipe.readyInMin = result.readyInMin
+							recipe.instructions = result.instructions
+							recipe.ingredients = result.ingredients
+							recipe.isComplete = result.isComplete
+							print("Fetching from API!!")
+							print("Num of servings: \(recipe.servings!)")
+							print("Ready in: \(recipe.readyInMin!) minutes")
+							print("Num of ingredients: \((recipe.ingredients!).count)")
+							print("Instructions: \(recipe.instructions!)")
+						})
+					})
+				}
+			}
         } else {
             print("Nil")
         }
