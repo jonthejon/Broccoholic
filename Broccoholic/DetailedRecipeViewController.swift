@@ -19,7 +19,7 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var bookmarkSwitch: UISwitch! //temp switch
     
-    let randomArray = ["text1", "text2", "text3"]
+//    let randomArray = ["text1", "text2", "text3"]
     var optRecipe: Recipe?
 	var optApiManager: RecipeAPIManager?
     
@@ -44,22 +44,20 @@ class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
 							recipe.instructions = result.instructions
 							recipe.ingredients = result.ingredients
 							recipe.isComplete = result.isComplete
-							print("Fetching from API!!")
-							print("Num of servings: \(recipe.servings!)")
-							print("Ready in: \(recipe.readyInMin!) minutes")
-							print("Num of ingredients: \((recipe.ingredients!).count)")
-							print("Instructions: \(recipe.instructions!)")
+//                            print("Fetching from API!!")
+//                            print("Num of servings: \(recipe.servings!)")
+//                            print("Ready in: \(recipe.readyInMin!) minutes")
+//                            print("Num of ingredients: \((recipe.ingredients!).count)")
+//                            print("Instructions: \(recipe.instructions!)")
 						})
 					})
 				}
 			}
-        } else {
-            print("Nil")
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return randomArray.count // return array
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
