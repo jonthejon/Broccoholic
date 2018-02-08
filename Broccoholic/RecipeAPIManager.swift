@@ -24,7 +24,7 @@ class RecipeAPIManager {
 	}
 	
 	enum RecipeApiError: Error {
-		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON, InvalidURL
+		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON, InvalidURL, UnableToParseImage
 	}
 	
 	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([Recipe])->()) {
@@ -86,6 +86,52 @@ class RecipeAPIManager {
 		dataTask.resume()
 	}
 	
+	func fetchImageWithUrl(url:String, callback: @escaping (UIImage?)->()) {
+		
+		let configuration = URLSessionConfiguration.default
+		configuration.waitsForConnectivity = true
+		let session = URLSession(configuration: configuration)
+		let 
+		guard let imageUrl = URL(url) else {
+			return nil
+		}
+		let downloadTask = session.downloadTask(with: imageUrl) { (url:URL?, response:URLResponse?, error:Error?) in
+			if error != nil {
+				print(RecipeApiError.UndefinedServerError)
+				return
+			}
+			guard let resp = response else {
+				print(RecipeApiError.UndefinedResponse)
+				return
+			}
+			if let statusCode = (resp as? HTTPURLResponse)?.statusCode {
+				if statusCode != 200 {
+					print(RecipeApiError.InvalidStatusCode)
+					return
+				}
+			}
+			do {
+				let data = try Data.init(contentsOf: url!)
+				let image = UIImage.init(data: data)
+				callback(image)
+			} catch {
+				print(RecipeApiError.UnableToParseImage)
+				return
+			}
+			
+		}
+		downloadTask.resume()
+//			NSData *data = [NSData dataWithContentsOfURL:location];
+//			UIImage* image = [UIImage imageWithData:data];
+//			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//			photo.image = image;
+//			cell.imageView.image = image;
+//			}];
+//			}];
+//		[downloadTask resume];
+	}
+	
+
 	private func generateURLRequest(url:URL) -> URLRequest {
 		var request = URLRequest(url: url)
 		request.addValue(self.headerInfo["X-Mashape-Key"]!, forHTTPHeaderField: "X-Mashape-Key")

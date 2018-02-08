@@ -31,16 +31,22 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
-		// TODO: this is where we will fetch the image data using Download with the API manager
-        cell.recipeImageView.image = UIImage(cgImage: #imageLiteral(resourceName: "roasted_vegetables").cgImage!)
-//        cell.recipeImageView.image = recipe.image
-        cell.recipeNameLabel.text = recipe.title
+		cell.recipeNameLabel.text = recipe.title
+		if recipe.image != nil {
+			cell.recipeImageView.image = recipe.image!
+			return cell
+		}
+		self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
+			OperationQueue.main.addOperation({
+				recipe.image = image
+				cell.recipeImageView.image = image
+			})
+		}
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = "showDetail"
-        
         if segue.identifier == segueIdentifier,
             let destination = segue.destination as? DetailedRecipeViewController,
             let indexPath = self.recipeCollectionView.indexPathsForSelectedItems?.last {
