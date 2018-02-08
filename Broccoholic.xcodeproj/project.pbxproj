@@ -15,6 +15,7 @@
 		970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */; };
 		970A2E2B202BA14E006C2980 /* DummyRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E2A202BA14E006C2980 /* DummyRecipe.swift */; };
 		970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */; };
+		7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14C0C2202B930D006F7FA6 /* Recipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		970A2E2A202BA14E006C2980 /* DummyRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyRecipe.swift; sourceTree = "<group>"; };
 		970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeViewController.swift; sourceTree = "<group>"; };
+		7A14C0C2202B930D006F7FA6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,8 @@
 				970A2E2A202BA14E006C2980 /* DummyRecipe.swift */,
 				970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */,
 				970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */,
+				7A14C0B2202B8C78006F7FA6 /* ViewController.swift */,
+				7A14C0C2202B930D006F7FA6 /* Recipe.swift */,
 				7A14C0B4202B8C78006F7FA6 /* Main.storyboard */,
 				7A14C0B7202B8C78006F7FA6 /* Assets.xcassets */,
 				7A14C0B9202B8C78006F7FA6 /* LaunchScreen.storyboard */,
@@ -149,6 +153,8 @@
 				970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */,
 				970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */,
 				7A14C0B3202B8C78006F7FA6 /* RecipesViewController.swift in Sources */,
+				7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */,
+				7A14C0B3202B8C78006F7FA6 /* ViewController.swift in Sources */,
 				7A14C0B1202B8C78006F7FA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
