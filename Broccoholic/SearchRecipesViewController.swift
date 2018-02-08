@@ -51,6 +51,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
             let destination = segue.destination as? DetailedRecipeViewController,
             let indexPath = self.recipeCollectionView.indexPathsForSelectedItems?.last {
             destination.optRecipe = data[indexPath.item]
+			destination.optApiManager = self.apiManager
         }
     }
 }

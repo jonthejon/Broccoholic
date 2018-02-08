@@ -3,23 +3,31 @@ import UIKit
 class RecipeAPIManager {
 	
 	let searchEndPoint:String
+	let detailEndPoint:String
 	let imageEndPoint:String
-	let params:[String:String]
+	let searchParams:[String:String]
+	let detailsParams:[String:String]
 	let headerInfo:[String:String]
-	var queryParameterName:String?
+	var queryParameterName:String
+	var idParameterName:String
 	
 	init() {
 		self.searchEndPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search"
-		params = [
+		self.detailEndPoint = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/informationBulk"
+		self.searchParams = [
 			"diet":"vegan",
 			"instructionsRequired":"true",
 			"number":"20"
+		]
+		self.detailsParams = [
+			"includeNutrition":"false"
 		]
 		self.headerInfo = [
 			"X-Mashape-Key":"TOm0IKGGc9mshc792FqI3pYYoMI5p1QK8tejsn0uwr0E7Pwx8r",
 			"Accept":"application/json"
 		]
 		self.queryParameterName = "query"
+		self.idParameterName = "ids"
 		self.imageEndPoint = "https://spoonacular.com/recipeImages/"
 	}
 	
@@ -28,7 +36,7 @@ class RecipeAPIManager {
 	}
 	
 	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([Recipe])->()) {
-		let query = queryParameterName != nil ? queryParameterName! : ""
+		let query = queryParameter != nil ? queryParameter! : ""
 		guard let url = self.generateSearchUrl(query: query) else {
 			print(RecipeApiError.InvalidURL)
 			return
@@ -82,8 +90,67 @@ class RecipeAPIManager {
 				return
 			}
 			callback(recipesArr)
+			session.invalidateAndCancel()
 		}
 		dataTask.resume()
+	}
+	
+	func fetchRecipeDetailFromApi(recipe: Recipe, callback: @escaping (Recipe)->()) {
+		guard let url = self.generateDetailUrl(id: recipe.id) else {
+			print(RecipeApiError.InvalidURL)
+			return
+		}
+		let configuration = URLSessionConfiguration.default
+		configuration.waitsForConnectivity = true
+		let session = URLSession(configuration: configuration)
+		let request = self.generateURLRequest(url: url)
+		let dataTask = session.dataTask(with: request) { (data:Data?, response:URLResponse?, error:Error?) in
+			if error != nil {
+				print(RecipeApiError.UndefinedServerError)
+				return
+			}
+			guard let resp = response else {
+				print(RecipeApiError.UndefinedResponse)
+				return
+			}
+			if let statusCode = (resp as? HTTPURLResponse)?.statusCode {
+				if statusCode != 200 {
+					print(RecipeApiError.InvalidStatusCode)
+					return
+				}
+			}
+			guard let data = data else {
+				print(RecipeApiError.InvalidData)
+				return
+			}
+			do {
+				let json = try JSONSerialization.jsonObject(with: data, options: [])
+				let recipeDict:[String:Any] = (json as! [[String:Any]])[0]
+				let servings:Int = recipeDict["servings"] as? Int ?? 0
+				let readyInMin:Int = recipeDict["readyInMinutes"] as? Int ?? 0
+				let instructions:String = recipeDict["instructions"] as? String ?? "No instructions defined"
+				let ingredientsDictArr:[[String:Any]] = recipeDict["extendedIngredients"] as! [[String:Any]]
+				var ingredTupArr:[(String, Int, String)] = [(String, Int, String)]()
+				for ingredientDict in ingredientsDictArr {
+					let name:String = ingredientDict["name"] as? String ?? "Undefined name"
+					let amount:Int = recipeDict["amount"] as? Int ?? 0
+					let unit:String = ingredientDict["unit"] as? String ?? "-"
+					ingredTupArr.append((name, amount, unit))
+				}
+				recipe.servings = servings
+				recipe.readyInMin = readyInMin
+				recipe.instructions = instructions
+				recipe.ingredients = ingredTupArr
+				recipe.isComplete = true
+			} catch {
+				print(RecipeApiError.UnableToParseJSON)
+				return
+			}
+			callback(recipe)
+			session.invalidateAndCancel()
+		}
+		dataTask.resume()
+		
 	}
 	
 	func fetchImageWithUrl(url:String, callback: @escaping (UIImage?)->()) {
@@ -114,6 +181,7 @@ class RecipeAPIManager {
 				let data = try Data.init(contentsOf: url!)
 				let image = UIImage.init(data: data)
 				callback(image)
+				session.invalidateAndCancel()
 			} catch {
 				print(RecipeApiError.UnableToParseImage)
 				return
@@ -121,14 +189,6 @@ class RecipeAPIManager {
 			
 		}
 		downloadTask.resume()
-//			NSData *data = [NSData dataWithContentsOfURL:location];
-//			UIImage* image = [UIImage imageWithData:data];
-//			[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//			photo.image = image;
-//			cell.imageView.image = image;
-//			}];
-//			}];
-//		[downloadTask resume];
 	}
 	
 
@@ -141,10 +201,24 @@ class RecipeAPIManager {
 	
 	private func generateSearchUrl(query:String) -> URL? {
 		var queryItemsArr = [URLQueryItem]()
-		for (key, value) in self.params {
+		for (key, value) in self.searchParams {
 			queryItemsArr.append(URLQueryItem(name: key, value: value))
 		}
+		queryItemsArr.append(URLQueryItem(name: self.queryParameterName, value: query))
 		guard var component = URLComponents(string: self.searchEndPoint) else {
+			return nil
+		}
+		component.queryItems = queryItemsArr
+		return component.url
+	}
+	
+	private func generateDetailUrl(id:Int) -> URL? {
+		var queryItemsArr = [URLQueryItem]()
+		for (key, value) in self.detailsParams {
+			queryItemsArr.append(URLQueryItem(name: key, value: value))
+		}
+		queryItemsArr.append(URLQueryItem(name: self.idParameterName, value: String(id)))
+		guard var component = URLComponents(string: self.detailEndPoint) else {
 			return nil
 		}
 		component.queryItems = queryItemsArr
