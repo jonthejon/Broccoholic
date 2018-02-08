@@ -14,19 +14,14 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		let manager = RecipeAPIManager()
-		do {
-			try manager.fetchRecipesFromApi(queryParameter: nil, callback: { (recipes:[TempRecipe]) in
-				for recipe in recipes {
-					print("ID: \(recipe.id)")
-					print("TITlE: \(recipe.title)")
-					print("IMAGE: \(recipe.imageUrl)")
-					print("------")
-				}
-//				print(recipes)
-			})
-		} catch let error {
-			print(error)
-		}
+		manager.fetchRecipesFromApi(queryParameter: nil, callback: { (recipes:[TempRecipe]) in
+			for recipe in recipes {
+				print("ID: \(recipe.id)")
+				print("TITlE: \(recipe.title)")
+				print("IMAGE: \(recipe.imageUrl)")
+				print("------")
+			}
+		})
 	}
 
 	override func didReceiveMemoryWarning() {
