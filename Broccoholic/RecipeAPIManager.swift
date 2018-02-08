@@ -22,46 +22,51 @@ class RecipeAPIManager {
 	}
 	
 	enum RecipeApiError: Error {
-		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON
+		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON, InvalidURL
 	}
 	
-	func fetchRecipesFromApi(queryParameter:String?, networkCallback callback:([TempRecipe])->()) throws {
+	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([TempRecipe])->()) throws {
 		let query = queryParameterName != nil ? queryParameterName! : ""
 		guard let url = self.generateSearchUrl(query: query) else {
-			callback([TempRecipe]())
-			return
+			throw RecipeApiError.InvalidURL
 		}
-		let configuration = URLSessionConfiguration()
+		let configuration = URLSessionConfiguration.default
 		configuration.waitsForConnectivity = true
 		let session = URLSession(configuration: configuration)
 		let request = self.generateURLRequest(url: url)
+				print(url)
+				print(request.allHTTPHeaderFields)
 		var errorType:RecipeApiError?
 		let dataTask = session.dataTask(with: request) { (data:Data?, response:URLResponse?, error:Error?) in
-			if error == nil {
+			if error != nil {
 				errorType = RecipeApiError.UndefinedServerError
+				print("error")
 				return
 			}
 			guard let resp = response else {
 				errorType = RecipeApiError.UndefinedResponse
+				print("resp")
 				return
 			}
 			if let statusCode = (resp as? HTTPURLResponse)?.statusCode {
 				if statusCode != 200 {
 					errorType = RecipeApiError.InvalidStatusCode
+				print("status")
 					return
 				}
 			}
 			guard let data = data else {
 				errorType = RecipeApiError.InvalidData
+				print("data")
 				return
 			}
+			var recipesArr:[TempRecipe] = [TempRecipe]()
 			do {
 				let json = try JSONSerialization.jsonObject(with: data, options: [])
-				guard let recipesArrDict = (json as! [String:Any])["results"] as? [[String:Any]] else {
+				guard let recipesArrDict:[[String:Any]] = (json as! [String:Any])["results"] as? [[String:Any]] else {
 					errorType = RecipeApiError.UnableToParseJSON
 					return
 				}
-				var recipesArr:[TempRecipe] = [TempRecipe]()
 				for recipeDict in recipesArrDict {
 					let id = recipeDict["id"] as? Int
 					let title = recipeDict["title"] as? String
@@ -72,6 +77,7 @@ class RecipeAPIManager {
 				errorType = RecipeApiError.InvalidJSONFormat
 				return
 			}
+			callback(recipesArr)
 		}
 		dataTask.resume()
 		if (errorType != nil) {
@@ -81,7 +87,8 @@ class RecipeAPIManager {
 	
 	private func generateURLRequest(url:URL) -> URLRequest {
 		var request = URLRequest(url: url)
-		request.allHTTPHeaderFields = self.headerInfo
+		request.addValue(self.headerInfo["X-Mashape-Key"]!, forHTTPHeaderField: "X-Mashape-Key")
+		request.addValue(self.headerInfo["Accept"]!, forHTTPHeaderField: "Accept")
 		return request
 	}
 	
@@ -90,9 +97,11 @@ class RecipeAPIManager {
 		for (key, value) in self.params {
 			queryItemsArr.append(URLQueryItem(name: key, value: value))
 		}
-		let component = NSURLComponents(string: self.searchEndPoint)
-		component?.queryItems = queryItemsArr
-		return component?.url
+		guard var component = URLComponents(string: self.searchEndPoint) else {
+			return nil
+		}
+		component.queryItems = queryItemsArr
+		return component.url
 	}
 	
 }
