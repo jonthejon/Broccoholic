@@ -8,65 +8,75 @@
 
 import UIKit
 
-class DetailedRecipeViewController: UIViewController, UITableViewDataSource {
+class DetailedRecipeViewController: UIViewController {
+    
     
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var servingsLabel: UILabel!
     @IBOutlet weak var readyLabel: UILabel!
     @IBOutlet weak var directionsText: UITextView!
-    
+    @IBOutlet weak var ingredientsLabel: UILabel!
     
     @IBOutlet weak var bookmarkSwitch: UISwitch! //temp switch
     
-//    let randomArray = ["text1", "text2", "text3"]
-    var optRecipe: Recipe?
-	var optApiManager: RecipeAPIManager?
     
+    var optRecipe: Recipe?
+    var optApiManager: RecipeAPIManager?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let recipe = optRecipe {
             recipeNameLabel.text = recipe.title
             recipeImageView.image = recipe.image
-			if recipe.isComplete {
-				print("Fetching from CACHE!!")
-				print("Num of servings: \(recipe.servings!)")
-				print("Ready in: \(recipe.readyInMin!) minutes")
-				print("Num of ingredients: \((recipe.ingredients!).count)")
-				print("Instructions: \(recipe.instructions!)")
-			} else {
-				if let manager = self.optApiManager {
-					manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
-						OperationQueue.main.addOperation({
-							recipe.servings = result.servings
-							recipe.readyInMin = result.readyInMin
-							recipe.instructions = result.instructions
-							recipe.ingredients = result.ingredients
-							recipe.isComplete = result.isComplete
-//                            print("Fetching from API!!")
-//                            print("Num of servings: \(recipe.servings!)")
-//                            print("Ready in: \(recipe.readyInMin!) minutes")
-//                            print("Num of ingredients: \((recipe.ingredients!).count)")
-//                            print("Instructions: \(recipe.instructions!)")
-						})
-					})
-				}
-			}
+            if recipe.isComplete {
+                self.updateUI()
+            } else {
+                if let manager = self.optApiManager {
+                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+                        OperationQueue.main.addOperation({
+                            recipe.servings = result.servings
+                            recipe.readyInMin = result.readyInMin
+                            recipe.instructions = result.instructions
+                            recipe.ingredients = result.ingredients
+                            recipe.isComplete = result.isComplete
+                            
+                            self.updateUI()
+
+                        })
+                    })
+                }
+            }
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func updateUI() {
+        guard let recipe = self.optRecipe else {
+            return
+        }
+        self.ingredientsLabel.text = ""
+        if let ingredientsArrTup = recipe.ingredients {
+            for tuple in ingredientsArrTup {
+                let name = tuple.name
+                let amount = tuple.quantity
+                let unit = tuple.unit
+                self.ingredientsLabel.text?.append("\(name), quantity:\(amount), unit:\(unit)\n")
+            }
+        }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailedCell", for: indexPath) as! DetailedControllerCell
+        if let recipeServings = recipe.servings {
+            self.servingsLabel.text = "Servings: \(String(recipeServings))"
+        }
         
-    
-    
-        return cell
+        if let readyInMin = recipe.readyInMin {
+            self.readyLabel.text = "Prepare time: \(String(readyInMin))mins"
+        }
+        
+        if let instructions = recipe.instructions {
+            self.directionsText.text = instructions
+        }
+        
     }
     
 }

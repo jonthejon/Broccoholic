@@ -8,7 +8,7 @@ class Recipe {
 	var image:UIImage?
 	var servings:Int?
 	var readyInMin:Int?
-	var ingredients:[(String, Int, String)]?
+    var ingredients:[(name: String, quantity: Int, unit: String)]?
 	var instructions:String?
 	var isBookmarked:Bool
 	var isComplete:Bool
