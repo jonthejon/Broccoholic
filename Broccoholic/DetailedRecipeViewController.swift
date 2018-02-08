@@ -13,16 +13,14 @@ class DetailedRecipeViewController: UIViewController {
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var recipeImageView: UIImageView!
     
-    var dummyRecipe: DummyRecipe?
+    var optRecipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let dummyrecipe = dummyRecipe {
-            
-            recipeNameLabel.text = dummyrecipe.recipeName
-            recipeImageView.image = dummyrecipe.recipeImage
-            
+        if let recipe = optRecipe {
+            recipeNameLabel.text = recipe.title
+            recipeImageView.image = recipe.image
         } else {
             print("Nil")
         }

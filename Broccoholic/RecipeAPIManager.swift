@@ -27,7 +27,7 @@ class RecipeAPIManager {
 		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON, InvalidURL
 	}
 	
-	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([TempRecipe])->()) {
+	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([Recipe])->()) {
 		let query = queryParameterName != nil ? queryParameterName! : ""
 		guard let url = self.generateSearchUrl(query: query) else {
 			print(RecipeApiError.InvalidURL)
@@ -56,20 +56,26 @@ class RecipeAPIManager {
 				print(RecipeApiError.InvalidData)
 				return
 			}
-			var recipesArr:[TempRecipe] = [TempRecipe]()
+			var recipesArr:[Recipe] = [Recipe]()
 			do {
 				let json = try JSONSerialization.jsonObject(with: data, options: [])
 				guard let recipesArrDict:[[String:Any]] = (json as! [String:Any])["results"] as? [[String:Any]] else {
 					return
 				}
 				for recipeDict in recipesArrDict {
-					let id = recipeDict["id"] as? Int
-					let title = recipeDict["title"] as? String
-					var imageUrl = ""
+					let id:Int
+					let title:String
+					let imageUrl:String
+					if let tempId = recipeDict["id"] as? Int {
+						id = tempId
+					} else {id = -1}
+					if let tempTitle = recipeDict["title"] as? String {
+						title = tempTitle
+					} else {title="Undefined title"}
 					if let imageEndUrl = recipeDict["image"] as? String {
 						imageUrl = self.imageEndPoint + imageEndUrl
-					}
-					recipesArr.append(TempRecipe(id: id, imageUrl: imageUrl, title: title))
+					} else {imageUrl="Undefine image URL"}
+					recipesArr.append(Recipe(id: id, title: title, imageUrl: imageUrl))
 				}
 			} catch {
 				print(RecipeApiError.UnableToParseJSON)

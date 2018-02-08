@@ -11,36 +11,24 @@ import UIKit
 class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var recipeCollectionView: UICollectionView!
-    
-    var recipeArray = [DummyRecipe]()
-    
-    
+    var data = [Recipe]()
+	var apiManager = RecipeAPIManager()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
-        let recipe1 = DummyRecipe(recipeName: "Broccoli Pasta", recipeImage: UIImage(named:"broccoli_pasta")!)
-        let recipe2 = DummyRecipe(recipeName: "Broccoli Salad", recipeImage: UIImage(named:"broccoli_salad")!)
-        let recipe3 = DummyRecipe(recipeName: "Pea & Potato Curry", recipeImage: UIImage(named:"pea_potato_curry")!)
-        let recipe4 = DummyRecipe(recipeName: "Roasted Vegetables", recipeImage: UIImage(named:"roasted_vegetables")!)
-        let recipe5 = DummyRecipe(recipeName: "Spinach Pie", recipeImage: UIImage(named:"spinach_pie")!)
-        
-        recipeArray = [recipe1, recipe2, recipe3, recipe4, recipe5]
+		// TODO: run the method from the api manager to retrieve data and update the Ui
 	}
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return recipeArray.count
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
-        
-        let dummyRecipe = self.recipeArray[indexPath.item]
-        
-        cell.recipeImageView.image = dummyRecipe.recipeImage
-        cell.recipeNameLabel.text = dummyRecipe.recipeName
-        
+        let recipe = self.data[indexPath.item]
+		// TODO: this is where we will fetch the image data using Download with the API manager
+        cell.recipeImageView.image = recipe.image
+        cell.recipeNameLabel.text = recipe.title
         return cell
     }
     
@@ -50,7 +38,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         if segue.identifier == segueIdentifier,
             let destination = segue.destination as? DetailedRecipeViewController,
             let indexPath = self.recipeCollectionView.indexPathsForSelectedItems?.last {
-            destination.dummyRecipe = recipeArray[indexPath.item]
+            destination.optRecipe = data[indexPath.item]
         }
     }
 }
