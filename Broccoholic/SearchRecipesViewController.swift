@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     
