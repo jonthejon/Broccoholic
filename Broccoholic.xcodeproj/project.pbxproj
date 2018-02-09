@@ -16,9 +16,11 @@
 		7A14C0C5202B9892006F7FA6 /* RecipeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14C0C4202B9892006F7FA6 /* RecipeAPIManager.swift */; };
 		970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */; };
 		970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */; };
+		C673FEE62D725D790874F868 /* Pods_Broccoholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18AD5641C838255E8A4C7C82 /* Pods-Broccoholic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broccoholic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic.debug.xcconfig"; sourceTree = "<group>"; };
 		7A14C0AD202B8C78006F7FA6 /* Broccoholic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Broccoholic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A14C0B0202B8C78006F7FA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A14C0B2202B8C78006F7FA6 /* SearchRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		7A14C0C4202B9892006F7FA6 /* RecipeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIManager.swift; sourceTree = "<group>"; };
 		970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeViewController.swift; sourceTree = "<group>"; };
+		BC551BA90BC87DE4C5147318 /* Pods-Broccoholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broccoholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic.release.xcconfig"; sourceTree = "<group>"; };
+		DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Broccoholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C673FEE62D725D790874F868 /* Pods_Broccoholic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B9C16132633079D37B1E28C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18AD5641C838255E8A4C7C82 /* Pods-Broccoholic.debug.xcconfig */,
+				BC551BA90BC87DE4C5147318 /* Pods-Broccoholic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7A14C0A4202B8C78006F7FA6 = {
 			isa = PBXGroup;
 			children = (
 				7A14C0AF202B8C78006F7FA6 /* Broccoholic */,
 				7A14C0AE202B8C78006F7FA6 /* Products */,
+				5B9C16132633079D37B1E28C /* Pods */,
+				BC1EC8573E1354089DDA02EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +92,14 @@
 			path = Broccoholic;
 			sourceTree = "<group>";
 		};
+		BC1EC8573E1354089DDA02EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A14C0BF202B8C78006F7FA6 /* Build configuration list for PBXNativeTarget "Broccoholic" */;
 			buildPhases = (
+				765A87EA76897BAE641CC68F /* [CP] Check Pods Manifest.lock */,
 				7A14C0A9202B8C78006F7FA6 /* Sources */,
 				7A14C0AA202B8C78006F7FA6 /* Frameworks */,
 				7A14C0AB202B8C78006F7FA6 /* Resources */,
+				D832AAAB30CBB22265746452 /* [CP] Embed Pods Frameworks */,
+				64F606CB63C32702A9D45F84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,6 +169,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64F606CB63C32702A9D45F84 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		765A87EA76897BAE641CC68F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Broccoholic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D832AAAB30CBB22265746452 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A14C0A9202B8C78006F7FA6 /* Sources */ = {
@@ -288,6 +371,7 @@
 		};
 		7A14C0C0202B8C78006F7FA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18AD5641C838255E8A4C7C82 /* Pods-Broccoholic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +386,7 @@
 		};
 		7A14C0C1202B8C78006F7FA6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC551BA90BC87DE4C5147318 /* Pods-Broccoholic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

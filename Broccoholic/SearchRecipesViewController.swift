@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
