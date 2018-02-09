@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,6 +29,11 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <view key="backgroundView" contentMode="scaleToFill" id="NGp-0c-HDS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="594"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCell" id="SDJ-Ed-lTz" customClass="RecipeCollectionViewCell" customModule="Broccoholic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="182" height="174"/>
@@ -36,19 +42,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="182" height="174"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-JN-h1G">
-                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="146"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-JN-h1G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="cPw-JN-h1G" secondAttribute="height" multiplier="1:1" id="K04-Y9-liX"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
-                                                    <rect key="frame" x="0.0" y="153" width="182" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
+                                                    <rect key="frame" x="40.5" y="153" width="101.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-ZC-KpQ">
+                                                    <rect key="frame" x="140" y="117" width="42" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button" image="hearts-off"/>
+                                                </button>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="leading" secondItem="SDJ-Ed-lTz" secondAttribute="leading" id="VAn-Yf-Nub"/>
+                                            <constraint firstAttribute="bottom" secondItem="jCO-ls-JRn" secondAttribute="bottom" id="ahP-S4-ZJC"/>
+                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="top" secondItem="SDJ-Ed-lTz" secondAttribute="top" id="avG-wh-DMP"/>
+                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="fBe-mc-TPl"/>
+                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="top" secondItem="cPw-JN-h1G" secondAttribute="bottom" constant="-29" id="iNJ-AC-Ljh"/>
+                                            <constraint firstAttribute="trailing" secondItem="cPw-JN-h1G" secondAttribute="trailing" id="vjE-I2-NTm"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="recipeImageView" destination="cPw-JN-h1G" id="ARb-U2-Rg7"/>
                                             <outlet property="recipeNameLabel" destination="jCO-ls-JRn" id="Z4S-oJ-xLX"/>
@@ -153,6 +173,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-qf-5iC">
+                                        <rect key="frame" x="139" y="734" width="41" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="hearts-off"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Bqb-Jz-Agf" secondAttribute="trailing" constant="16" id="0Nr-Yk-OLW"/>
@@ -229,4 +254,7 @@
             <point key="canvasLocation" x="-318" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hearts-off" width="42" height="37"/>
+    </resources>
 </document>

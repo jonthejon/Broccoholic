@@ -21,6 +21,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 			self.data = resultArr
 			OperationQueue.main.addOperation({
 				self.recipeCollectionView.reloadData()
+                
 			})
 		}
 	}
@@ -37,10 +38,13 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
+        cell.recipe = recipe
+        // get rid of below
 		cell.recipeNameLabel.text = recipe.title
 		if recipe.image != nil {
 			cell.recipeImageView.image = recipe.image!
 			return cell
+            
 		}
 		self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
 			OperationQueue.main.addOperation({
