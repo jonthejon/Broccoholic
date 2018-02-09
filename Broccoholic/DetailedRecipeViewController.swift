@@ -18,21 +18,30 @@ class DetailedRecipeViewController: UIViewController {
     @IBOutlet weak var directionsText: UITextView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     
-    @IBOutlet weak var bookSwitch: UISwitch!
+    @IBOutlet weak var bookmarkOutlet: UIButton!
+
+    
     var optRecipe: Recipe?
     var optApiManager: RecipeAPIManager?
     
-    
-    
-    @IBAction func bookmarkSwitch(_ sender: UISwitch) {
-        let switchValue = sender.isOn
-            if let recipe = optRecipe {
-                recipe.isBookmarked = switchValue
-                print("\(recipe.isBookmarked)")
-            }
+    @IBAction func bookmarkButton(_ sender: UIButton) {
+        
+        if let recipe = optRecipe {
+            recipe.isBookmarked = !recipe.isBookmarked
+            
+            displayBookmarkState()
+        }
     }
     
-    
+    func displayBookmarkState() {
+        if let recipe = optRecipe {
+            if recipe.isBookmarked {
+                bookmarkOutlet.setImage(#imageLiteral(resourceName: "hearts-on"), for: .normal)
+            } else {
+                bookmarkOutlet.setImage(#imageLiteral(resourceName: "hearts-off"), for: .normal)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +85,7 @@ class DetailedRecipeViewController: UIViewController {
             }
         }
         
-        self.bookSwitch.isOn = recipe.isBookmarked
+        displayBookmarkState()
         
         if let recipeServings = recipe.servings {
             self.servingsLabel.text = "Servings: \(String(recipeServings))"
