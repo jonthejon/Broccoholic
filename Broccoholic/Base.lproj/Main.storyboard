@@ -7,9 +7,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Search Recipes View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -19,57 +25,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wBp-fj-xUb">
-                                <rect key="frame" x="0.0" y="73" width="375" height="594"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wBp-fj-xUb">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5zy-Y7-Z7l">
-                                    <size key="itemSize" width="182" height="174"/>
+                                    <size key="itemSize" width="167" height="161"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" id="NGp-0c-HDS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="594"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recipeCell" id="SDJ-Ed-lTz" customClass="RecipeCollectionViewCell" customModule="Broccoholic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="182" height="174"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="161"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="182" height="174"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-JN-h1G">
-                                                    <rect key="frame" x="0.0" y="0.0" width="182" height="182"/>
+                                                    <rect key="frame" x="26" y="0.0" width="116.5" height="117"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="cPw-JN-h1G" secondAttribute="height" multiplier="1:1" id="K04-Y9-liX"/>
+                                                        <constraint firstAttribute="width" secondItem="cPw-JN-h1G" secondAttribute="height" multiplier="1:1" id="jbO-tM-bZh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
-                                                    <rect key="frame" x="40.5" y="153" width="101.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-ZC-KpQ">
+                                                    <rect key="frame" x="114" y="92" width="28.5" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="eNZ-ZC-KpQ" secondAttribute="height" multiplier="42:37" id="AS4-nJ-c2f"/>
+                                                        <constraint firstAttribute="height" constant="25" id="GJG-ho-F2T"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="hearts-off"/>
+                                                    <state key="disabled" image="hearts-off"/>
+                                                    <state key="selected" image="hearts-on"/>
+                                                    <connections>
+                                                        <action selector="bookmarkRecipe:" destination="SDJ-Ed-lTz" eventType="touchUpInside" id="IlF-n9-z0f"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
+                                                    <rect key="frame" x="0.0" y="133" width="167" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-ZC-KpQ">
-                                                    <rect key="frame" x="140" y="117" width="42" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="hearts-off"/>
-                                                </button>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.0097152162343263626" green="0.57703769207000732" blue="0.97849065065383911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="leading" secondItem="SDJ-Ed-lTz" secondAttribute="leading" id="VAn-Yf-Nub"/>
-                                            <constraint firstAttribute="bottom" secondItem="jCO-ls-JRn" secondAttribute="bottom" id="ahP-S4-ZJC"/>
-                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="top" secondItem="SDJ-Ed-lTz" secondAttribute="top" id="avG-wh-DMP"/>
-                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="fBe-mc-TPl"/>
-                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="top" secondItem="cPw-JN-h1G" secondAttribute="bottom" constant="-29" id="iNJ-AC-Ljh"/>
-                                            <constraint firstAttribute="trailing" secondItem="cPw-JN-h1G" secondAttribute="trailing" id="vjE-I2-NTm"/>
+                                            <constraint firstItem="eNZ-ZC-KpQ" firstAttribute="trailing" secondItem="cPw-JN-h1G" secondAttribute="trailing" id="Voa-Lm-lRp"/>
+                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="top" secondItem="cPw-JN-h1G" secondAttribute="bottom" constant="16" id="X0i-mp-H8G"/>
+                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="top" secondItem="SDJ-Ed-lTz" secondAttribute="top" id="ZFb-DT-w3N"/>
+                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="djb-vc-aFs"/>
+                                            <constraint firstItem="eNZ-ZC-KpQ" firstAttribute="bottom" secondItem="cPw-JN-h1G" secondAttribute="bottom" id="iYm-Hr-KrR"/>
+                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="width" secondItem="SDJ-Ed-lTz" secondAttribute="width" id="tTx-fR-Bxc"/>
+                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="x4k-pf-zcE"/>
+                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="width" secondItem="SDJ-Ed-lTz" secondAttribute="width" multiplier="0.7" id="xse-RV-7Mk"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="bookmarkButton" destination="eNZ-ZC-KpQ" id="en6-g5-2bu"/>
                                             <outlet property="recipeImageView" destination="cPw-JN-h1G" id="ARb-U2-Rg7"/>
                                             <outlet property="recipeNameLabel" destination="jCO-ls-JRn" id="Z4S-oJ-xLX"/>
                                             <segue destination="m2y-cb-KHw" kind="show" identifier="showDetail" id="Jwn-2w-Af0"/>
@@ -82,10 +99,18 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wBp-fj-xUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="43E-gI-Eb8"/>
+                            <constraint firstItem="wBp-fj-xUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="G4F-da-mWK"/>
+                            <constraint firstItem="wBp-fj-xUb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Pqd-oh-tgL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wBp-fj-xUb" secondAttribute="trailing" id="ROI-6T-Kg5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wBp-fj-xUb" secondAttribute="bottom" id="crj-aT-Lnb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NNc-Mp-KAP"/>
                     <connections>
+                        <outlet property="collectionViewLayout" destination="5zy-Y7-Z7l" id="dij-Fv-n2F"/>
                         <outlet property="recipeCollectionView" destination="wBp-fj-xUb" id="teO-DJ-Kbz"/>
                     </connections>
                 </viewController>
@@ -132,7 +157,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Servings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-aT-4uL">
-                                        <rect key="frame" x="8" y="241" width="251" height="21"/>
+                                        <rect key="frame" x="8" y="241" width="66.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -147,12 +172,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5bb-Ey-1Kh">
-                                        <rect key="frame" x="318" y="241" width="51" height="31"/>
-                                        <connections>
-                                            <action selector="bookmarkSwitch:" destination="m2y-cb-KHw" eventType="valueChanged" id="W59-6s-DTH"/>
-                                        </connections>
-                                    </switch>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zqs-jk-fcQ">
                                         <rect key="frame" x="8" y="431.5" width="359" height="267"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,9 +193,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-qf-5iC">
-                                        <rect key="frame" x="139" y="734" width="41" height="37"/>
+                                        <rect key="frame" x="318" y="241" width="41" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="hearts-off"/>
+                                        <connections>
+                                            <action selector="bookmarkButton:" destination="m2y-cb-KHw" eventType="touchUpInside" id="nmg-Rq-9Op"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -194,8 +216,6 @@
                                     <constraint firstItem="6Ft-II-XVC" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="8" id="Oh4-VL-gJb"/>
                                     <constraint firstItem="zqs-jk-fcQ" firstAttribute="top" secondItem="0vv-aG-6ci" secondAttribute="bottom" constant="8" id="R9X-jL-Sp3"/>
                                     <constraint firstItem="6Ft-II-XVC" firstAttribute="leading" secondItem="EIS-3D-gBW" secondAttribute="leading" id="WGm-MD-UKn"/>
-                                    <constraint firstItem="5bb-Ey-1Kh" firstAttribute="leading" secondItem="5Dg-aT-4uL" secondAttribute="trailing" constant="59" id="XfB-CB-Xv8"/>
-                                    <constraint firstItem="5bb-Ey-1Kh" firstAttribute="leading" secondItem="Veb-mk-j75" secondAttribute="trailing" constant="-49" id="abR-oZ-ci9"/>
                                     <constraint firstAttribute="trailing" secondItem="EIS-3D-gBW" secondAttribute="trailing" constant="81" id="bi9-od-6qN"/>
                                     <constraint firstItem="5Dg-aT-4uL" firstAttribute="leading" secondItem="6Ft-II-XVC" secondAttribute="leading" id="c8t-kW-eW0"/>
                                     <constraint firstItem="5Dg-aT-4uL" firstAttribute="top" secondItem="Veb-mk-j75" secondAttribute="bottom" constant="8" id="cnD-ht-nSc"/>
@@ -206,7 +226,6 @@
                                     <constraint firstItem="0vv-aG-6ci" firstAttribute="top" secondItem="Bqb-Jz-Agf" secondAttribute="bottom" constant="28" id="tD7-xt-EIT"/>
                                     <constraint firstItem="MeH-jX-XDJ" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="20" id="tHB-VM-bTQ"/>
                                     <constraint firstItem="MeH-jX-XDJ" firstAttribute="top" secondItem="d94-Jz-MNE" secondAttribute="top" constant="16" id="xSM-Uh-yww"/>
-                                    <constraint firstItem="5Dg-aT-4uL" firstAttribute="top" secondItem="5bb-Ey-1Kh" secondAttribute="top" id="yAe-Us-KY4"/>
                                     <constraint firstAttribute="width" constant="375" id="yyL-uE-A3o"/>
                                 </constraints>
                             </scrollView>
@@ -222,7 +241,7 @@
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
-                        <outlet property="bookSwitch" destination="5bb-Ey-1Kh" id="JyV-AD-UAR"/>
+                        <outlet property="bookmarkOutlet" destination="1oS-qf-5iC" id="jdZ-J0-FuA"/>
                         <outlet property="directionsText" destination="zqs-jk-fcQ" id="Vrh-O0-ts6"/>
                         <outlet property="ingredientsLabel" destination="Bqb-Jz-Agf" id="U3F-jT-9YU"/>
                         <outlet property="readyLabel" destination="6Ft-II-XVC" id="DTo-zc-G5y"/>
@@ -256,5 +275,6 @@
     </scenes>
     <resources>
         <image name="hearts-off" width="42" height="37"/>
+        <image name="hearts-on" width="42" height="37"/>
     </resources>
 </document>

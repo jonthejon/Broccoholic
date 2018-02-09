@@ -11,14 +11,17 @@ import UIKit
 class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
+    @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var recipeCollectionView: UICollectionView!
+    
     var data = [Recipe]()
     var bookmarks = [Recipe]()
 	var apiManager = RecipeAPIManager()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+        
 		
 		// THIS IS THE FAKE DATA INSERTION PART
 		let rec1 = Recipe(id: 1, title: "Broccoli", imageUrl: "fakeURl")
@@ -67,6 +70,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		self.data.append(rec4)
 		// THIS END THE FAKE DATA PART
 
+        // DONT DELETE LINES BELOW//
 		
 //		self.apiManager.fetchRecipesFromApi(queryParameter: nil) { (resultArr:[Recipe]) in
 //			self.data = resultArr
@@ -76,6 +80,43 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 //		}
 
 	}
+//
+//    - (void)viewDidLayoutSubviews {
+//    CGFloat collectionWidth = self.collectionView.frame.size.width;
+//    CGFloat minItemSpace = self.collectionLayout.minimumInteritemSpacing;
+//    CGFloat spaceToDraw = collectionWidth - minItemSpace;
+//    //    CGFloat spaceToDraw = collectionWidth - minItemSpace*2;
+//    CGSize calcItemSize = CGSizeMake(spaceToDraw/2, spaceToDraw/2);
+//    self.collectionLayout.itemSize = calcItemSize;
+//    [self.collectionLayout invalidateLayout];
+//    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        let collectionWidth = self.recipeCollectionView.frame.size.width
+        let minItemSpace = self.collectionViewLayout.minimumInteritemSpacing
+        let spaceToDraw = collectionWidth - minItemSpace
+        let ratio = self.collectionViewLayout.itemSize.width / self.collectionViewLayout.itemSize.height
+        let calcItemSize = CGSize(width: spaceToDraw/2, height: (spaceToDraw/2)*ratio)
+        self.collectionViewLayout.itemSize = calcItemSize
+        self.collectionViewLayout.invalidateLayout()
+        
+        view.layoutIfNeeded()
+        
+        recipeCollectionView.visibleCells.forEach { (cell: UICollectionViewCell) in
+            let cell = cell as! RecipeCollectionViewCell
+            cell.prepareCircle()
+        }
+        
+        
+//        CGFloat collectionWidth = self.collectionView.frame.size.width;
+//            CGFloat minItemSpace = self.collectionLayout.minimumInteritemSpacing;
+//            CGFloat spaceToDraw = collectionWidth - minItemSpace;
+//                CGFloat spaceToDraw = collectionWidth - minItemSpace*2;
+//            CGSize calcItemSize = CGSizeMake(spaceToDraw/2, spaceToDraw/2);
+//            self.collectionLayout.itemSize = calcItemSize;
+//            [self.collectionLayout invalidateLayout];
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.recipeCollectionView.reloadData()
@@ -91,12 +132,15 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let recipe = self.data[indexPath.item]
         cell.recipe = recipe
         // get rid of below
-		cell.recipeNameLabel.text = recipe.title
-		if recipe.image != nil {
-			cell.recipeImageView.image = recipe.image!
-			return cell
-            
-		}
+//        cell.recipeNameLabel.text = recipe.title
+//        if recipe.image != nil {
+//            cell.recipeImageView.image = recipe.image!
+//            return cell
+//
+//        }
+        
+        // DONT DELETE LINES BELOW//
+        
 //		self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
 //			OperationQueue.main.addOperation({
 //				recipe.image = image

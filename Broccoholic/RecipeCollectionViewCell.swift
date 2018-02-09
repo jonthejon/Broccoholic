@@ -12,16 +12,31 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     
     var recipe: Recipe! {
         didSet {
-            self.prepareCircle()
-            self.recipeNameLabel.text = recipe.title
-//            recipe.isBookmarked
+            prepareCircle()
+            recipeNameLabel.text = recipe.title
+            recipeImageView.image = recipe.image
+            displayBookmarkState()
         }
     }
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
+    @IBOutlet weak var bookmarkButton: UIButton!
     
-     func prepareCircle() {
+    func displayBookmarkState()  {
+        if recipe.isBookmarked {
+            bookmarkButton.setImage(#imageLiteral(resourceName: "hearts-on"), for: .normal)
+        } else {
+            bookmarkButton.setImage(#imageLiteral(resourceName: "hearts-off"), for: .normal)
+        }
+    }
+    
+    @IBAction func bookmarkRecipe(_ sender: Any) {
+        recipe.isBookmarked = !recipe.isBookmarked
+        displayBookmarkState()
+    }
+    
+    func prepareCircle() {
         recipeImageView.layer.borderWidth = 0
         recipeImageView.layer.masksToBounds = false
         recipeImageView.layer.borderColor = UIColor.black.cgColor
