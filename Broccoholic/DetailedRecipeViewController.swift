@@ -18,12 +18,21 @@ class DetailedRecipeViewController: UIViewController {
     @IBOutlet weak var directionsText: UITextView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     
-    @IBOutlet weak var bookmarkSwitch: UISwitch! //temp switch
-    
-    
     var optRecipe: Recipe?
     var optApiManager: RecipeAPIManager?
-
+    
+    
+    
+    @IBAction func bookmarkSwitch(_ sender: UISwitch) {
+        let switchValue = sender.isOn
+            if let recipe = optRecipe {
+                recipe.isBookmarked = switchValue
+                print("\(recipe.isBookmarked)")
+            }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

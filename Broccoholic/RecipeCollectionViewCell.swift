@@ -13,6 +13,12 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
     @IBOutlet weak var bookmarkSwitch: UISwitch!
+    
+    @IBAction func bookmarkAction(_ sender: Any) {
+        
+        self.
+    }
+    
 }
 
 

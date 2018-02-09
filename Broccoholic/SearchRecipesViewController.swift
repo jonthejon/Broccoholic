@@ -10,6 +10,10 @@ import UIKit
 
 class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    
+    
+    
+    
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     var data = [Recipe]()
 	var apiManager = RecipeAPIManager()
@@ -23,6 +27,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 			})
 		}
 	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.recipeCollectionView.reloadData()
+    }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
@@ -32,6 +40,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
 		cell.recipeNameLabel.text = recipe.title
+        cell.bookmarkSwitch.isOn = recipe.isBookmarked
 		if recipe.image != nil {
 			cell.recipeImageView.image = recipe.image!
 			return cell
@@ -44,6 +53,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		}
         return cell
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let segueIdentifier = "showDetail"
