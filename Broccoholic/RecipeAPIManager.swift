@@ -17,7 +17,7 @@ class RecipeAPIManager {
 		self.searchParams = [
 			"diet":"vegan",
 			"instructionsRequired":"true",
-			"number":"20"
+			"number":"30"
 		]
 		self.detailsParams = [
 			"includeNutrition":"false"
@@ -130,10 +130,10 @@ class RecipeAPIManager {
 				let readyInMin:Int = recipeDict["readyInMinutes"] as? Int ?? 0
 				let instructions:String = recipeDict["instructions"] as? String ?? "No instructions defined"
 				let ingredientsDictArr:[[String:Any]] = recipeDict["extendedIngredients"] as! [[String:Any]]
-				var ingredTupArr:[(String, Int, String)] = [(String, Int, String)]()
+				var ingredTupArr:[(String, Double, String)] = [(String, Double, String)]()
 				for ingredientDict in ingredientsDictArr {
 					let name:String = ingredientDict["name"] as? String ?? "Undefined name"
-					let amount:Int = recipeDict["amount"] as? Int ?? 0
+					let amount:Double = ingredientDict["amount"] as? Double ?? 0
 					let unit:String = ingredientDict["unit"] as? String ?? "-"
 					ingredTupArr.append((name, amount, unit))
 				}

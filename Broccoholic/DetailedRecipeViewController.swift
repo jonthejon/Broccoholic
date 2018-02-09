@@ -43,22 +43,22 @@ class DetailedRecipeViewController: UIViewController {
             if recipe.isComplete {
                 self.updateUI()
             }
-//			else {
-//                if let manager = self.optApiManager {
-//                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
-//                        OperationQueue.main.addOperation({
-//                            recipe.servings = result.servings
-//                            recipe.readyInMin = result.readyInMin
-//                            recipe.instructions = result.instructions
-//                            recipe.ingredients = result.ingredients
-//                            recipe.isComplete = result.isComplete
-//
-//                            self.updateUI()
-//
-//                        })
-//                    })
-//                }
-//            }
+			else {
+                if let manager = self.optApiManager {
+                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+                        OperationQueue.main.addOperation({
+                            recipe.servings = result.servings
+                            recipe.readyInMin = result.readyInMin
+                            recipe.instructions = result.instructions
+                            recipe.ingredients = result.ingredients
+                            recipe.isComplete = result.isComplete
+
+                            self.updateUI()
+
+                        })
+                    })
+                }
+            }
         }
     }
     
