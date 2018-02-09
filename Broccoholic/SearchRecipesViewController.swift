@@ -17,6 +17,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 		
 		// THIS IS THE FAKE DATA INSERTION PART
 		let rec1 = Recipe(id: 1, title: "Broccoli", imageUrl: "fakeURl")
@@ -50,6 +51,9 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 //				self.recipeCollectionView.reloadData()
 //			})
 //		}
+
+	
+
 	}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,10 +68,13 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
+        cell.recipe = recipe
+        // get rid of below
 		cell.recipeNameLabel.text = recipe.title
 		if recipe.image != nil {
 			cell.recipeImageView.image = recipe.image!
 			return cell
+            
 		}
 //		self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
 //			OperationQueue.main.addOperation({
