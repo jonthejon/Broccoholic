@@ -18,6 +18,7 @@ class DetailedRecipeViewController: UIViewController {
     @IBOutlet weak var directionsText: UITextView!
     @IBOutlet weak var ingredientsLabel: UILabel!
     
+    @IBOutlet weak var bookSwitch: UISwitch!
     var optRecipe: Recipe?
     var optApiManager: RecipeAPIManager?
     
@@ -73,6 +74,8 @@ class DetailedRecipeViewController: UIViewController {
                 self.ingredientsLabel.text?.append("\(name), quantity:\(amount), unit:\(unit)\n")
             }
         }
+        
+        self.bookSwitch.isOn = recipe.isBookmarked
         
         if let recipeServings = recipe.servings {
             self.servingsLabel.text = "Servings: \(String(recipeServings))"

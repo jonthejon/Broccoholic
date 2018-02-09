@@ -11,9 +11,6 @@ import UIKit
 class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     
-    
-    
-    
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     var data = [Recipe]()
 	var apiManager = RecipeAPIManager()
@@ -36,11 +33,11 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         return data.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
 		cell.recipeNameLabel.text = recipe.title
-        cell.bookmarkSwitch.isOn = recipe.isBookmarked
 		if recipe.image != nil {
 			cell.recipeImageView.image = recipe.image!
 			return cell
