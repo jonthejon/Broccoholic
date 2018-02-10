@@ -23,6 +23,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		super.viewDidLoad()
         
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
+        self.title = "Broccoholic"
 		
 		// THIS IS THE FAKE DATA INSERTION PART
 		let rec1 = Recipe(id: 1, title: "Broccoli Pasta", imageUrl: "fakeURl")
