@@ -28,7 +28,12 @@ class DetailedRecipeViewController: UIViewController {
         
         if let recipe = optRecipe {
             recipe.isBookmarked = !recipe.isBookmarked
-            
+			
+			if let scv = self.navigationController?.viewControllers[0] as? SearchRecipesViewController {
+				scv.updateBookmark(recipe: recipe)
+			}
+			
+			
             displayBookmarkState()
         }
     }

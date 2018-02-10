@@ -19,7 +19,26 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     var data = [Recipe]()
     var bookmarks = [Recipe]()
 	var apiManager = RecipeAPIManager()
+	let realm = RealmInterface()
 
+	func updateBookmark(recipe:Recipe) {
+		if recipe.isBookmarked {
+			self.bookmarks.append(recipe)
+			realm.saveRecipe(recipe: recipe)
+		} else {
+			let id = recipe.id
+			for i in 0..<self.bookmarks.count {
+				if self.bookmarks[i].id == id {
+//					realm.deleteAll()
+					realm.deleteRecipe(recipe: self.bookmarks[i])
+					self.bookmarks.remove(at: i)
+					break
+				}
+			}
+		}
+//		let recipesBookmarked = realm.fetchSavedRecipes()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
@@ -132,6 +151,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
         let recipe = self.data[indexPath.item]
         cell.recipe = recipe
+		cell.rootController = self
         // get rid of below
 //        cell.recipeNameLabel.text = recipe.title
 //        if recipe.image != nil {

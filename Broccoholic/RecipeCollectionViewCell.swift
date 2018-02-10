@@ -18,6 +18,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
             displayBookmarkState()
         }
     }
+	var rootController: SearchRecipesViewController!
     
     @IBOutlet weak var recipeImageView: UIImageView!
     @IBOutlet weak var recipeNameLabel: UILabel!
@@ -33,6 +34,9 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     
     @IBAction func bookmarkRecipe(_ sender: Any) {
         recipe.isBookmarked = !recipe.isBookmarked
+		
+		self.rootController.updateBookmark(recipe: self.recipe)
+		
         displayBookmarkState()
     }
     
