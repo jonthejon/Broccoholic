@@ -47,7 +47,6 @@ class DetailedRecipeViewController: UIViewController {
 				scv.updateBookmark(recipe: recipe)
 			}
 			
-			
             displayBookmarkState()
         }
     }

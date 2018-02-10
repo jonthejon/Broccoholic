@@ -54,6 +54,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         )
     
         recipe.isBookmarked = !recipe.isBookmarked
+    
 		
 		self.rootController.updateBookmark(recipe: self.recipe)
 		

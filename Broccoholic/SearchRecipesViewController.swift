@@ -15,11 +15,13 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var recipeCollectionView: UICollectionView!
+    @IBOutlet weak var recipeSearchBar: UISearchBar!
+
     
     var data = [Recipe]()
 	var apiManager = RecipeAPIManager()
 	let realm = RealmInterface()
-
+    
 	func updateBookmark(recipe:Recipe) {
 		if recipe.isBookmarked {
 			realm.saveRecipe(recipe: recipe)
@@ -27,7 +29,14 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 			realm.deleteRecipe(recipe: recipe)
 		}
 	}
-	
+    
+    @IBAction func bookmarkButtonTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    
+    
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
@@ -91,6 +100,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 //				self.recipeCollectionView.reloadData()
 //			})
 //		}
+        
 
 	}
 
@@ -140,8 +150,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueIdentifier = "showDetail"
-        if segue.identifier == segueIdentifier,
+
+        if segue.identifier == "showDetail",
             let destination = segue.destination as? DetailedRecipeViewController,
             let indexPath = self.recipeCollectionView.indexPathsForSelectedItems?.last {
             destination.optRecipe = data[indexPath.item]

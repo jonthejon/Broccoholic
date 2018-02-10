@@ -119,10 +119,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="NNc-Mp-KAP">
                         <barButtonItem key="backBarButtonItem" title=" " id="BDx-CL-m8u"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="HQl-gN-7S7">
+                            <connections>
+                                <action selector="bookmarkButtonTapped:" destination="BYZ-38-t0r" id="0Rb-ce-qwj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionViewLayout" destination="5zy-Y7-Z7l" id="dij-Fv-n2F"/>
                         <outlet property="recipeCollectionView" destination="wBp-fj-xUb" id="teO-DJ-Kbz"/>
+                        <outlet property="recipeSearchBar" destination="4vf-O4-X3Z" id="4xk-Uf-dFW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
