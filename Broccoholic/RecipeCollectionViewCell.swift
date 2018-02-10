@@ -94,7 +94,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
 		let newBookmarkHeight = newBookmarkWidth / bookmarkRatio
 		bookmarkButton.bounds.size = CGSize.init(width: newBookmarkWidth, height: newBookmarkHeight)
 //		let bookmarkOffset:CGFloat = 5
-		let newBookmarkX = recipeImageView.bounds.origin.x + recipeImageView.bounds.size.width - 5// - (newBookmarkWidth/2)
+		let newBookmarkX = recipeImageView.bounds.origin.x + recipeImageView.bounds.size.width// - 5// - (newBookmarkWidth/2)
 		let newBookmarkY = recipeImageView.bounds.origin.y + recipeImageView.bounds.size.height - 5// - (newBookmarkHeight/2)
 		bookmarkButton.center = CGPoint.init(x: newBookmarkX, y: newBookmarkY)
 		

@@ -19,9 +19,11 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 
     
     var data = [Recipe]()
+	var cachedData = [Recipe]()
 	var apiManager = RecipeAPIManager()
 	let realm = RealmInterface()
 	var flag = false
+	var bookmarkflag = false
 	func updateBookmark(recipe:Recipe) {
 		if recipe.isBookmarked {
 			realm.saveRecipe(recipe: recipe)
@@ -31,7 +33,18 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	}
     
     @IBAction func bookmarkButtonTapped(_ sender: UIBarButtonItem) {
-        
+		if !self.bookmarkflag {
+			self.bookmarkflag = true
+			self.cachedData = data
+			let savedRecipes = realm.fetchSavedRecipes()
+			self.data = savedRecipes
+			self.recipeCollectionView.reloadData()
+		} else {
+			self.bookmarkflag = false
+			self.data = self.cachedData
+			self.cachedData.removeAll()
+			self.recipeCollectionView.reloadData()
+		}
     }
 	
 	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
