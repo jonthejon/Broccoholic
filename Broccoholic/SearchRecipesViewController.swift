@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SearchRecipesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     
     @IBOutlet weak var collectionViewLayout: UICollectionViewFlowLayout!
@@ -33,7 +33,13 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     @IBAction func bookmarkButtonTapped(_ sender: UIBarButtonItem) {
         
     }
-    
+	
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.resignFirstResponder()
+		if let query = searchBar.text {
+			self.doFetchData(query: query)
+		}
+	}
     
     
     
@@ -93,14 +99,18 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		// THIS END THE FAKE DATA PART
 
         // DONT DELETE LINES BELOW//
-		
-		self.apiManager.fetchRecipesFromApi(queryParameter: nil) { (resultArr:[Recipe]) in
+	
+		self.doFetchData(query: nil)
+
+	}
+	
+	private func doFetchData(query:String?) {
+		self.apiManager.fetchRecipesFromApi(queryParameter: query) { (resultArr:[Recipe]) in
 			self.data = resultArr
 			OperationQueue.main.addOperation({
 				self.recipeCollectionView.reloadData()
 			})
 		}
-
 	}
 
 	func updateBookmarkInData() {
