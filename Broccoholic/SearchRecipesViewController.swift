@@ -94,6 +94,16 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 
 	}
 
+	func updateBookmarkInData() {
+		let savedIds = realm.fetchIDsOfSavedRecipes()
+		for recipe in self.data {
+			if savedIds.contains(recipe.id) {
+				recipe.isBookmarked = true
+			}
+		}
+		self.recipeCollectionView.reloadData()
+	}
+	
     override func viewDidLayoutSubviews() {
         
         let collectionWidth = self.recipeCollectionView.frame.size.width
@@ -103,7 +113,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let calcItemSize = CGSize(width: spaceToDraw/2, height: (spaceToDraw/2)*ratio)
         self.collectionViewLayout.itemSize = calcItemSize
         self.collectionViewLayout.invalidateLayout()
-        
+        self.updateBookmarkInData()
         view.layoutIfNeeded()
         
         recipeCollectionView.visibleCells.forEach { (cell: UICollectionViewCell) in
