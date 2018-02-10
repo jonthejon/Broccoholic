@@ -53,6 +53,9 @@ class DetailedRecipeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
+        self.title = "Broccoholic"
+        
         if let recipe = optRecipe {
             recipeNameLabel.text = recipe.title
             recipeImageView.image = recipe.image

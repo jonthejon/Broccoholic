@@ -22,7 +22,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        
+        
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.backItem?.title = " "
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
         self.title = "Broccoholic"
 		
