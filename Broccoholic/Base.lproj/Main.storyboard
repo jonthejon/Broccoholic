@@ -134,12 +134,12 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="746"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeH-jX-XDJ">
-                                        <rect key="frame" x="20" y="16" width="339" height="26"/>
+                                        <rect key="frame" x="18" y="16" width="341" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="gwK-Kb-J0Z"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="339" id="ziH-Zp-C5e"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -207,7 +207,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1oS-qf-5iC">
-                                        <rect key="frame" x="333" y="251" width="34" height="31"/>
+                                        <rect key="frame" x="329" y="251" width="34" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="LFg-Xt-L3l"/>
                                             <constraint firstAttribute="width" constant="34" id="ONS-pt-eUv"/>
@@ -227,7 +227,7 @@
                                     <constraint firstItem="0vv-aG-6ci" firstAttribute="top" secondItem="Bqb-Jz-Agf" secondAttribute="bottom" constant="24" id="9A2-cC-KP7"/>
                                     <constraint firstItem="6Ft-II-XVC" firstAttribute="top" secondItem="5Dg-aT-4uL" secondAttribute="bottom" constant="8" id="Epa-4I-GyE"/>
                                     <constraint firstItem="EIS-3D-gBW" firstAttribute="top" secondItem="6Ft-II-XVC" secondAttribute="bottom" constant="28" id="F1z-Oi-ZmU"/>
-                                    <constraint firstItem="1oS-qf-5iC" firstAttribute="leading" secondItem="Veb-mk-j75" secondAttribute="trailing" constant="-42" id="HwD-TA-DYa"/>
+                                    <constraint firstItem="1oS-qf-5iC" firstAttribute="leading" secondItem="Veb-mk-j75" secondAttribute="trailing" constant="-46" id="HwD-TA-DYa"/>
                                     <constraint firstItem="zqs-jk-fcQ" firstAttribute="top" secondItem="0vv-aG-6ci" secondAttribute="bottom" constant="8" id="Ipe-hZ-U80"/>
                                     <constraint firstItem="Veb-mk-j75" firstAttribute="top" secondItem="MeH-jX-XDJ" secondAttribute="bottom" constant="21" id="Knq-dh-6Xi"/>
                                     <constraint firstItem="0vv-aG-6ci" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="8" id="LJb-FR-EyY"/>
@@ -247,7 +247,7 @@
                                     <constraint firstItem="zqs-jk-fcQ" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="8" id="ih3-CN-Z8D"/>
                                     <constraint firstAttribute="trailing" secondItem="Bqb-Jz-Agf" secondAttribute="trailing" constant="20" id="slI-ck-7g0"/>
                                     <constraint firstAttribute="bottom" secondItem="zqs-jk-fcQ" secondAttribute="bottom" constant="40.5" id="soS-4a-dyp"/>
-                                    <constraint firstItem="MeH-jX-XDJ" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="20" id="tHB-VM-bTQ"/>
+                                    <constraint firstItem="MeH-jX-XDJ" firstAttribute="leading" secondItem="d94-Jz-MNE" secondAttribute="leading" constant="17.5" id="tHB-VM-bTQ"/>
                                     <constraint firstAttribute="width" constant="375" id="yyL-uE-A3o"/>
                                 </constraints>
                             </scrollView>
