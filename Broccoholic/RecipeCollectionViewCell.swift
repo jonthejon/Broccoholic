@@ -16,6 +16,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
             recipeNameLabel.text = recipe.title
             recipeImageView.image = recipe.image
             displayBookmarkState()
+            self.backgroundColor = UIColor.clear
         }
     }
 	var rootController: SearchRecipesViewController!
@@ -33,6 +34,14 @@ class RecipeCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func bookmarkRecipe(_ sender: Any) {
+        
+        bookmarkButton.isHidden = false
+        self.bookmarkButton.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.35, delay: 0, options: [], animations: { () -> Void in
+            self.bookmarkButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+        
         recipe.isBookmarked = !recipe.isBookmarked
 		
 		self.rootController.updateBookmark(recipe: self.recipe)
@@ -46,8 +55,8 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         recipeImageView.layer.borderColor = UIColor.black.cgColor
         recipeImageView.layer.cornerRadius = recipeImageView.frame.height/2
         recipeImageView.clipsToBounds = true
+
     }
-    
 }
 
 

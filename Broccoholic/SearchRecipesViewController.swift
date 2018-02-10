@@ -42,9 +42,15 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
+        
+        
+        recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
+        self.navigationController?.navigationBar.backItem?.title = " "
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
+        self.title = "Broccoholic"
 		
 		// THIS IS THE FAKE DATA INSERTION PART
-		let rec1 = Recipe(id: 1, title: "Broccoli", imageUrl: "fakeURl")
+		let rec1 = Recipe(id: 1, title: "Broccoli Pasta", imageUrl: "fakeURl")
 		rec1.image = UIImage(named:"broccoli_pasta")
 		rec1.servings = 3
 		rec1.readyInMin = 20
@@ -55,7 +61,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec1.instructions = "mix all ingredients and there you go!"
 		rec1.isComplete = true
 		self.data.append(rec1)
-		let rec2 = Recipe(id: 2, title: "pea", imageUrl: "fakeURl")
+		let rec2 = Recipe(id: 2, title: "Pea & Potato Curry", imageUrl: "fakeURl")
 		rec2.image = UIImage(named:"pea_potato_curry")
 		rec2.servings = 3
 		rec2.readyInMin = 20
@@ -66,7 +72,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec2.instructions = "mix all ingredients and there you go!"
 		rec2.isComplete = true
 		self.data.append(rec2)
-		let rec3 = Recipe(id: 3, title: "salad", imageUrl: "fakeURl")
+		let rec3 = Recipe(id: 3, title: "Broccoli Salad", imageUrl: "fakeURl")
 		rec3.image = UIImage(named:"broccoli_salad")
 		rec3.servings = 3
 		rec3.readyInMin = 20
@@ -77,7 +83,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec3.instructions = "mix all ingredients and there you go!"
 		rec3.isComplete = true
 		self.data.append(rec3)
-		let rec4 = Recipe(id: 4, title: "vegetables", imageUrl: "fakeURl")
+		let rec4 = Recipe(id: 4, title: "Roasted Vegetables", imageUrl: "fakeURl")
 		rec4.image = UIImage(named:"roasted_vegetables")
 		rec4.servings = 3
 		rec4.readyInMin = 20
