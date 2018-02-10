@@ -73,22 +73,22 @@ class DetailedRecipeViewController: UIViewController {
             if recipe.isComplete {
                 self.updateUI()
             }
-//			else {
-//                if let manager = self.optApiManager {
-//                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
-//                        OperationQueue.main.addOperation({
-//                            recipe.servings = result.servings
-//                            recipe.readyInMin = result.readyInMin
-//                            recipe.instructions = result.instructions
-//                            recipe.ingredients = result.ingredients
-//                            recipe.isComplete = result.isComplete
-//
-//                            self.updateUI()
-//
-//                        })
-//                    })
-//                }
-//            }
+			else {
+                if let manager = self.optApiManager {
+                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+                        OperationQueue.main.addOperation({
+                            recipe.servings = result.servings
+                            recipe.readyInMin = result.readyInMin
+                            recipe.instructions = result.instructions
+                            recipe.ingredients = result.ingredients
+                            recipe.isComplete = result.isComplete
+
+                            self.updateUI()
+
+                        })
+                    })
+                }
+            }
         }
     }
     
@@ -97,9 +97,7 @@ class DetailedRecipeViewController: UIViewController {
             return
         }
         self.ingredientsLabel.text = ""
-//		if let ingredientsArrTup = recipe.ingredients {
         if let ingredientsArr = recipe.ingredients {
-//			for tuple in ingredientsArrTup {
             for tuple in ingredientsArr {
                 let name = tuple.name
                 let amount = tuple.quantity

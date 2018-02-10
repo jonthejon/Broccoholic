@@ -10,7 +10,9 @@ class Recipe {
 	var readyInMin:Int?
 //    var ingredients:[(name: String, quantity: Double, unit: String)]?
 	var ingredients:[Ingredient]?
+	var filters:[RecipeFilter]?
 	var instructions:String?
+	var detailedInstructions:[String]?
 	var isBookmarked:Bool
 	var isComplete:Bool
 	
@@ -20,6 +22,20 @@ class Recipe {
 		self.imageUrl = imageUrl
 		self.isBookmarked = false
 		self.isComplete = false
+	}
+	
+	enum RecipeFilter {
+		case GlutenFree, DairyFree, Popular, Ketogenic
+	}
+	
+	class func createEnumArray(boolArr:[Bool]) -> [RecipeFilter]? {
+		if boolArr.count != 4 {return nil}
+		var result = [RecipeFilter]()
+		if boolArr[0] {result.append(RecipeFilter.GlutenFree)}
+		if boolArr[1] {result.append(RecipeFilter.DairyFree)}
+		if boolArr[2] {result.append(RecipeFilter.Popular)}
+		if boolArr[3] {result.append(RecipeFilter.Ketogenic)}
+		return result
 	}
 	
 }

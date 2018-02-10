@@ -68,6 +68,14 @@ class RealmInterface {
 		return self.fetchRecipesFromRealm()
 	}
 	
+	func fetchIDsOfSavedRecipes() -> [Int] {
+		let savedRecipes = self.fetchRecipesFromRealm()
+		let ids = savedRecipes.map { (saved) -> Int in
+			return saved.id
+		}
+		return ids
+	}
+	
 	private func persistRecipeIntoRealm(recipe: RecipeRealm) {
 		let realm = try! Realm()
 		try! realm.write {
