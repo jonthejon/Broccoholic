@@ -16,7 +16,10 @@ class RealmInterface {
 		recipeToSave.id = recipe.id
 		recipeToSave.title = recipe.title
 		recipeToSave.imageUrl = recipe.imageUrl
-//		recipeToSave.image = recipe.image
+		if let image = recipe.image {
+//			might break if image is of png format
+			recipeToSave.image = UIImageJPEGRepresentation(image, 1.0)
+		}
 		recipeToSave.servings.value = recipe.servings
 		recipeToSave.readyInMin.value = recipe.readyInMin
 		recipeToSave.instructions = recipe.instructions
@@ -29,7 +32,6 @@ class RealmInterface {
 		let realm = try! Realm()
 		let results = realm.objects(RecipeRealm.self)
 		var objectToDelete:RecipeRealm = RecipeRealm()
-//		let objectToDelete:RecipeRealm?
 		for realmRecipe in results {
 			if recipe.id == realmRecipe.id {
 				objectToDelete = realmRecipe
@@ -49,7 +51,7 @@ class RealmInterface {
 	}
 	
 	func fetchSavedRecipes() -> [Recipe] {
-		return self.fetchSavedRecipes()
+		return self.fetchRecipesFromRealm()
 	}
 	
 	private func persistRecipeIntoRealm(recipe: RecipeRealm) {
@@ -65,9 +67,13 @@ class RealmInterface {
 		var recipes:[Recipe] = [Recipe]()
 		for recipe in results {
 			let temp = Recipe(id: recipe.id, title: recipe.title, imageUrl: recipe.imageUrl)
-//			temp.image = recipe.image
 			temp.servings = recipe.servings.value
 			temp.readyInMin = recipe.readyInMin.value
+			var image:UIImage? = nil
+			if let imageData = recipe.image {
+				image = UIImage.init(data: imageData)
+			}
+			temp.image = image
 			temp.instructions = recipe.instructions
 			temp.isBookmarked = recipe.isBookmarked
 			temp.isComplete = recipe.isComplete
