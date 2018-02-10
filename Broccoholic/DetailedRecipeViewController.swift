@@ -29,9 +29,16 @@ class DetailedRecipeViewController: UIViewController {
         bookmarkOutlet.isHidden = false
         self.bookmarkOutlet.transform = CGAffineTransform(scaleX: 0, y: 0)
         
-        UIView.animate(withDuration: 0.35, delay: 0, options: [], animations: { () -> Void in
-            self.bookmarkOutlet.transform = CGAffineTransform(scaleX: 1, y: 1)
-        })
+        UIView.animate(withDuration: 0.35,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.35),
+                       initialSpringVelocity: CGFloat(0.0),
+                       options: UIViewAnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.bookmarkOutlet.transform = CGAffineTransform(scaleX: 1, y: 1)
+        },
+                       completion: { Void in()  }
+        )
         
         if let recipe = optRecipe {
             recipe.isBookmarked = !recipe.isBookmarked
