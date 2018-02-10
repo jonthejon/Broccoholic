@@ -17,32 +17,19 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     
     var data = [Recipe]()
-    var bookmarks = [Recipe]()
 	var apiManager = RecipeAPIManager()
 	let realm = RealmInterface()
 
 	func updateBookmark(recipe:Recipe) {
 		if recipe.isBookmarked {
-			self.bookmarks.append(recipe)
 			realm.saveRecipe(recipe: recipe)
 		} else {
-			let id = recipe.id
-			for i in 0..<self.bookmarks.count {
-				if self.bookmarks[i].id == id {
-//					realm.deleteAll()
-					realm.deleteRecipe(recipe: self.bookmarks[i])
-					self.bookmarks.remove(at: i)
-					break
-				}
-			}
+			realm.deleteRecipe(recipe: recipe)
 		}
-//		let recipesBookmarked = realm.fetchSavedRecipes()
 	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-        
-        
         
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
         self.navigationController?.navigationBar.backItem?.title = " "
@@ -106,17 +93,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 //		}
 
 	}
-//
-//    - (void)viewDidLayoutSubviews {
-//    CGFloat collectionWidth = self.collectionView.frame.size.width;
-//    CGFloat minItemSpace = self.collectionLayout.minimumInteritemSpacing;
-//    CGFloat spaceToDraw = collectionWidth - minItemSpace;
-//    //    CGFloat spaceToDraw = collectionWidth - minItemSpace*2;
-//    CGSize calcItemSize = CGSizeMake(spaceToDraw/2, spaceToDraw/2);
-//    self.collectionLayout.itemSize = calcItemSize;
-//    [self.collectionLayout invalidateLayout];
-//    }
-    
+
     override func viewDidLayoutSubviews() {
         
         let collectionWidth = self.recipeCollectionView.frame.size.width
@@ -133,15 +110,6 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
             let cell = cell as! RecipeCollectionViewCell
             cell.prepareCircle()
         }
-        
-        
-//        CGFloat collectionWidth = self.collectionView.frame.size.width;
-//            CGFloat minItemSpace = self.collectionLayout.minimumInteritemSpacing;
-//            CGFloat spaceToDraw = collectionWidth - minItemSpace;
-//                CGFloat spaceToDraw = collectionWidth - minItemSpace*2;
-//            CGSize calcItemSize = CGSizeMake(spaceToDraw/2, spaceToDraw/2);
-//            self.collectionLayout.itemSize = calcItemSize;
-//            [self.collectionLayout invalidateLayout];
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,14 +126,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         let recipe = self.data[indexPath.item]
         cell.recipe = recipe
 		cell.rootController = self
-        // get rid of below
-//        cell.recipeNameLabel.text = recipe.title
-//        if recipe.image != nil {
-//            cell.recipeImageView.image = recipe.image!
-//            return cell
-//
-//        }
-        
+		
         // DONT DELETE LINES BELOW//
         
 //		self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
