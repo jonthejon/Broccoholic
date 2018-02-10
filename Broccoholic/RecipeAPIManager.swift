@@ -17,7 +17,8 @@ class RecipeAPIManager {
 		self.searchParams = [
 			"diet":"vegan",
 			"instructionsRequired":"true",
-			"number":"30"
+			"number":"16"
+//			"number":"30"
 		]
 		self.detailsParams = [
 			"includeNutrition":"false"
@@ -128,21 +129,33 @@ class RecipeAPIManager {
 				let recipeDict:[String:Any] = (json as! [[String:Any]])[0]
 				let servings:Int = recipeDict["servings"] as? Int ?? 0
 				let readyInMin:Int = recipeDict["readyInMinutes"] as? Int ?? 0
+				let glutenFree:Bool = recipeDict["glutenFree"] as? Bool ?? false
+				let dairyFree:Bool = recipeDict["dairyFree"] as? Bool ?? false
+				let popular:Bool = recipeDict["veryPopular"] as? Bool ?? false
+				let ketogenic:Bool = recipeDict["ketogenic"] as? Bool ?? false
+				let filters = Recipe.createEnumArray(boolArr: [glutenFree, dairyFree, popular, ketogenic])
 				let instructions:String = recipeDict["instructions"] as? String ?? "No instructions defined"
 				let ingredientsDictArr:[[String:Any]] = recipeDict["extendedIngredients"] as! [[String:Any]]
-//				var ingredTupArr:[(String, Double, String)] = [(String, Double, String)]()
 				var ingredArr:[Ingredient] = [Ingredient]()
 				for ingredientDict in ingredientsDictArr {
 					let name:String = ingredientDict["name"] as? String ?? "Undefined name"
 					let amount:Double = ingredientDict["amount"] as? Double ?? 0
 					let unit:String = ingredientDict["unit"] as? String ?? "-"
-//					ingredTupArr.append((name, amount, unit))
 					ingredArr.append(Ingredient(name: name, quantity: amount, unit: unit))
 				}
 				recipe.servings = servings
 				recipe.readyInMin = readyInMin
+				recipe.filters = filters
 				recipe.instructions = instructions
-//				recipe.ingredients = ingredTupArr
+				let detailInstrucArr:[[String:Any]] = recipeDict["analyzedInstructions"] as! [[String:Any]]
+				let detailInstrucDict = detailInstrucArr[0]
+				let stepsDictArr:[[String:Any]] = detailInstrucDict["steps"] as! [[String:Any]]
+				var detailedInstructions = [String]()
+				for stepsDict in stepsDictArr {
+					let step = stepsDict["step"] as? String ?? "Undefined step"
+					detailedInstructions.append(step)
+				}
+				recipe.detailedInstructions = detailedInstructions
 				recipe.ingredients = ingredArr
 				recipe.isComplete = true
 			} catch {
