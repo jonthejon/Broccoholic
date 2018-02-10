@@ -17,6 +17,7 @@
 		7A4A2039202E71AA009B4B7C /* RecipeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A2038202E71AA009B4B7C /* RecipeRealm.swift */; };
 		7A4A203B202E7350009B4B7C /* RealmInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203A202E7350009B4B7C /* RealmInterface.swift */; };
 		7A4A203D202EB605009B4B7C /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203C202EB605009B4B7C /* Ingredient.swift */; };
+		7A4A203F202EBA44009B4B7C /* IngredientRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */; };
 		970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */; };
 		970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */; };
 		C673FEE62D725D790874F868 /* Pods_Broccoholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */; };
@@ -36,6 +37,7 @@
 		7A4A2038202E71AA009B4B7C /* RecipeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRealm.swift; sourceTree = "<group>"; };
 		7A4A203A202E7350009B4B7C /* RealmInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInterface.swift; sourceTree = "<group>"; };
 		7A4A203C202EB605009B4B7C /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRealm.swift; sourceTree = "<group>"; };
 		970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeViewController.swift; sourceTree = "<group>"; };
 		BC551BA90BC87DE4C5147318 /* Pods-Broccoholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broccoholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		7A14C0A4202B8C78006F7FA6 = {
 			isa = PBXGroup;
 			children = (
+				7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */,
 				7A4A203C202EB605009B4B7C /* Ingredient.swift */,
 				7A14C0AF202B8C78006F7FA6 /* Broccoholic */,
 				7A14C0AE202B8C78006F7FA6 /* Products */,
@@ -246,6 +249,7 @@
 				970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */,
 				7A14C0B3202B8C78006F7FA6 /* SearchRecipesViewController.swift in Sources */,
 				7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */,
+				7A4A203F202EBA44009B4B7C /* IngredientRealm.swift in Sources */,
 				7A4A2039202E71AA009B4B7C /* RecipeRealm.swift in Sources */,
 				7A14C0C5202B9892006F7FA6 /* RecipeAPIManager.swift in Sources */,
 				7A14C0B1202B8C78006F7FA6 /* AppDelegate.swift in Sources */,

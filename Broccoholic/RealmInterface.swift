@@ -20,6 +20,18 @@ class RealmInterface {
 //			might break if image is of png format
 			recipeToSave.image = UIImageJPEGRepresentation(image, 1.0)
 		}
+		let ingredientsRealm = List<IngredientRealm>()
+		if let ingredients = recipe.ingredients {
+			for ingredient in ingredients {
+				let realmIngredient = IngredientRealm()
+				realmIngredient.name = ingredient.name
+				realmIngredient.quantity = ingredient.quantity
+				realmIngredient.unit = ingredient.unit
+				ingredientsRealm.append(realmIngredient)
+//				recipeToSave.ingredients.append(realmIngredient)
+			}
+		}
+		recipeToSave.ingredients.append(objectsIn: ingredientsRealm)
 		recipeToSave.servings.value = recipe.servings
 		recipeToSave.readyInMin.value = recipe.readyInMin
 		recipeToSave.instructions = recipe.instructions
@@ -38,7 +50,9 @@ class RealmInterface {
 				break
 			}
 		}
+		let ingredientsToDelete = objectToDelete.ingredients
 		try! realm.write {
+			realm.delete(ingredientsToDelete)
 			realm.delete(objectToDelete)
 		}
 	}
@@ -74,6 +88,14 @@ class RealmInterface {
 				image = UIImage.init(data: imageData)
 			}
 			temp.image = image
+			var ingredients = [Ingredient]()
+			for realmIngredient in recipe.ingredients {
+				let name = realmIngredient.name
+				let quantity = realmIngredient.quantity
+				let unit = realmIngredient.unit
+				ingredients.append(Ingredient(name: name, quantity: quantity, unit: unit))
+			}
+			temp.ingredients = ingredients.count > 0 ? ingredients : nil
 			temp.instructions = recipe.instructions
 			temp.isBookmarked = recipe.isBookmarked
 			temp.isComplete = recipe.isComplete

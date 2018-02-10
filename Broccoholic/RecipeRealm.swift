@@ -15,6 +15,7 @@ class RecipeRealm: Object {
 	@objc dynamic var title = ""
 	@objc dynamic var imageUrl = ""
 	@objc dynamic var image: Data? = nil
+	let ingredients = List<IngredientRealm>()
 	let servings = RealmOptional<Int>()
 	let readyInMin = RealmOptional<Int>()
 	// NOT STORING INGREDIENTS FOR NOW
