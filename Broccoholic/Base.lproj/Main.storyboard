@@ -50,18 +50,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-JN-h1G">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cPw-JN-h1G">
                                                     <rect key="frame" x="21" y="0.0" width="125" height="125.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="cPw-JN-h1G" secondAttribute="height" multiplier="1:1" id="jbO-tM-bZh"/>
-                                                    </constraints>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-ZC-KpQ">
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNZ-ZC-KpQ">
                                                     <rect key="frame" x="117.5" y="100.5" width="28.5" height="25"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="eNZ-ZC-KpQ" secondAttribute="height" multiplier="42:37" id="AS4-nJ-c2f"/>
-                                                        <constraint firstAttribute="height" constant="25" id="GJG-ho-F2T"/>
-                                                    </constraints>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="hearts-off"/>
                                                     <state key="disabled" image="hearts-off"/>
                                                     <state key="selected" image="hearts-on"/>
@@ -69,8 +64,9 @@
                                                         <action selector="bookmarkRecipe:" destination="SDJ-Ed-lTz" eventType="touchUpInside" id="IlF-n9-z0f"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="jCO-ls-JRn">
                                                     <rect key="frame" x="0.0" y="141.5" width="167" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,16 +75,6 @@
                                                 </label>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="eNZ-ZC-KpQ" firstAttribute="trailing" secondItem="cPw-JN-h1G" secondAttribute="trailing" id="Voa-Lm-lRp"/>
-                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="top" secondItem="cPw-JN-h1G" secondAttribute="bottom" constant="16" id="X0i-mp-H8G"/>
-                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="top" secondItem="SDJ-Ed-lTz" secondAttribute="top" id="ZFb-DT-w3N"/>
-                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="djb-vc-aFs"/>
-                                            <constraint firstItem="eNZ-ZC-KpQ" firstAttribute="bottom" secondItem="cPw-JN-h1G" secondAttribute="bottom" id="iYm-Hr-KrR"/>
-                                            <constraint firstItem="jCO-ls-JRn" firstAttribute="width" secondItem="SDJ-Ed-lTz" secondAttribute="width" id="tTx-fR-Bxc"/>
-                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="centerX" secondItem="SDJ-Ed-lTz" secondAttribute="centerX" id="x4k-pf-zcE"/>
-                                            <constraint firstItem="cPw-JN-h1G" firstAttribute="width" secondItem="SDJ-Ed-lTz" secondAttribute="width" multiplier="0.75" id="xse-RV-7Mk"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="bookmarkButton" destination="eNZ-ZC-KpQ" id="en6-g5-2bu"/>
                                             <outlet property="recipeImageView" destination="cPw-JN-h1G" id="ARb-U2-Rg7"/>
