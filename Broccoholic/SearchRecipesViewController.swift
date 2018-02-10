@@ -41,10 +41,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec1.image = UIImage(named:"broccoli_pasta")
 		rec1.servings = 3
 		rec1.readyInMin = 20
-		rec1.ingredients = [("ingredient 1", 2, "cups"),
-		("ingredient 2", 3, "cups"),
-		("ingredient 3", 6, "cups"),
-		("ingredient 4", 1, "spoons")]
+		rec1.ingredients = [Ingredient(name: "ingredient1", quantity: 2, unit: "cups"),
+							Ingredient(name: "ingredient2", quantity: 3, unit: "cups"),
+							Ingredient(name: "ingredient3", quantity: 6, unit: "cups"),
+							Ingredient(name: "ingredient4", quantity: 1, unit: "spoons")]
 		rec1.instructions = "mix all ingredients and there you go!"
 		rec1.isComplete = true
 		self.data.append(rec1)
@@ -52,10 +52,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec2.image = UIImage(named:"pea_potato_curry")
 		rec2.servings = 3
 		rec2.readyInMin = 20
-		rec2.ingredients = [("ingredient 1", 2, "cups"),
-							("ingredient 2", 3, "cups"),
-							("ingredient 3", 6, "cups"),
-							("ingredient 4", 1, "spoons")]
+		rec2.ingredients = [Ingredient(name: "ingredient1", quantity: 2, unit: "cups"),
+							Ingredient(name: "ingredient2", quantity: 3, unit: "cups"),
+							Ingredient(name: "ingredient3", quantity: 6, unit: "cups"),
+							Ingredient(name: "ingredient4", quantity: 1, unit: "spoons")]
 		rec2.instructions = "mix all ingredients and there you go!"
 		rec2.isComplete = true
 		self.data.append(rec2)
@@ -63,10 +63,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec3.image = UIImage(named:"broccoli_salad")
 		rec3.servings = 3
 		rec3.readyInMin = 20
-		rec3.ingredients = [("ingredient 1", 2, "cups"),
-							("ingredient 2", 3, "cups"),
-							("ingredient 3", 6, "cups"),
-							("ingredient 4", 1, "spoons")]
+		rec3.ingredients = [Ingredient(name: "ingredient1", quantity: 2, unit: "cups"),
+							Ingredient(name: "ingredient2", quantity: 3, unit: "cups"),
+							Ingredient(name: "ingredient3", quantity: 6, unit: "cups"),
+							Ingredient(name: "ingredient4", quantity: 1, unit: "spoons")]
 		rec3.instructions = "mix all ingredients and there you go!"
 		rec3.isComplete = true
 		self.data.append(rec3)
@@ -74,10 +74,10 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		rec4.image = UIImage(named:"roasted_vegetables")
 		rec4.servings = 3
 		rec4.readyInMin = 20
-		rec4.ingredients = [("ingredient 1", 2, "cups"),
-							("ingredient 2", 3, "cups"),
-							("ingredient 3", 6, "cups"),
-							("ingredient 4", 1, "spoons")]
+		rec4.ingredients = [Ingredient(name: "ingredient1", quantity: 2, unit: "cups"),
+							Ingredient(name: "ingredient2", quantity: 3, unit: "cups"),
+							Ingredient(name: "ingredient3", quantity: 6, unit: "cups"),
+							Ingredient(name: "ingredient4", quantity: 1, unit: "spoons")]
 		rec4.instructions = "mix all ingredients and there you go!"
 		rec4.isComplete = true
 		self.data.append(rec4)

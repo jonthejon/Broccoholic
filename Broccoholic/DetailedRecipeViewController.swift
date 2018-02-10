@@ -91,8 +91,10 @@ class DetailedRecipeViewController: UIViewController {
             return
         }
         self.ingredientsLabel.text = ""
-        if let ingredientsArrTup = recipe.ingredients {
-            for tuple in ingredientsArrTup {
+//		if let ingredientsArrTup = recipe.ingredients {
+        if let ingredientsArr = recipe.ingredients {
+//			for tuple in ingredientsArrTup {
+            for tuple in ingredientsArr {
                 let name = tuple.name
                 let amount = tuple.quantity
                 let unit = tuple.unit

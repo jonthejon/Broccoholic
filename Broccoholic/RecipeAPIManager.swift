@@ -130,17 +130,20 @@ class RecipeAPIManager {
 				let readyInMin:Int = recipeDict["readyInMinutes"] as? Int ?? 0
 				let instructions:String = recipeDict["instructions"] as? String ?? "No instructions defined"
 				let ingredientsDictArr:[[String:Any]] = recipeDict["extendedIngredients"] as! [[String:Any]]
-				var ingredTupArr:[(String, Double, String)] = [(String, Double, String)]()
+//				var ingredTupArr:[(String, Double, String)] = [(String, Double, String)]()
+				var ingredArr:[Ingredient] = [Ingredient]()
 				for ingredientDict in ingredientsDictArr {
 					let name:String = ingredientDict["name"] as? String ?? "Undefined name"
 					let amount:Double = ingredientDict["amount"] as? Double ?? 0
 					let unit:String = ingredientDict["unit"] as? String ?? "-"
-					ingredTupArr.append((name, amount, unit))
+//					ingredTupArr.append((name, amount, unit))
+					ingredArr.append(Ingredient(name: name, quantity: amount, unit: unit))
 				}
 				recipe.servings = servings
 				recipe.readyInMin = readyInMin
 				recipe.instructions = instructions
-				recipe.ingredients = ingredTupArr
+//				recipe.ingredients = ingredTupArr
+				recipe.ingredients = ingredArr
 				recipe.isComplete = true
 			} catch {
 				print(RecipeApiError.UnableToParseJSON)
