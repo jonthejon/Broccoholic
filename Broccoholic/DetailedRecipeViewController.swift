@@ -65,7 +65,7 @@ class DetailedRecipeViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
-        self.title = "Broccoholic"
+        navigationItem.title = "Broccoholic"
         
         if let recipe = optRecipe {
             recipeNameLabel.text = recipe.title

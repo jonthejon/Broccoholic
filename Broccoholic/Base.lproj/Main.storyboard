@@ -105,7 +105,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NNc-Mp-KAP">
-                        <barButtonItem key="backBarButtonItem" title=" " id="BDx-CL-m8u"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="ejd-Fc-ek3"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="bookmarks" id="HQl-gN-7S7">
                             <connections>
                                 <action selector="bookmarkButtonTapped:" destination="BYZ-38-t0r" id="0Rb-ce-qwj"/>
