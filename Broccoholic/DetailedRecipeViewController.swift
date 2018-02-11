@@ -50,7 +50,7 @@ class DetailedRecipeViewController: UIViewController {
             displayBookmarkState()
 			let reminder = ReminderInterface(recipe: recipe, controller: self)
 			let formatedIngredients = recipe.ingredients!.map({ (ingredient: Ingredient) -> String in
-				return ingredient.name
+				return "\(ingredient.name) - \(ingredient.quantity) \(ingredient.unit)"
 			})
 			if reminder.saveIngredients(ingredients: formatedIngredients) {
 				let alert = UIAlertController(title: "Go vegan!", message: "The ingredients have been added to a shopping list in your Reminders!", preferredStyle: .alert)
@@ -83,22 +83,22 @@ class DetailedRecipeViewController: UIViewController {
             if recipe.isComplete {
                 self.updateUI()
             }
-//            else {
-//                if let manager = self.optApiManager {
-//                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
-//                        OperationQueue.main.addOperation({
-//                            recipe.servings = result.servings
-//                            recipe.readyInMin = result.readyInMin
-//                            recipe.instructions = result.instructions
-//                            recipe.ingredients = result.ingredients
-//                            recipe.isComplete = result.isComplete
-//
-//                            self.updateUI()
-//
-//                        })
-//                    })
-//                }
-//            }
+            else {
+                if let manager = self.optApiManager {
+                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+                        OperationQueue.main.addOperation({
+                            recipe.servings = result.servings
+                            recipe.readyInMin = result.readyInMin
+                            recipe.instructions = result.instructions
+                            recipe.ingredients = result.ingredients
+                            recipe.isComplete = result.isComplete
+
+                            self.updateUI()
+
+                        })
+                    })
+                }
+            }
         }
     }
     
