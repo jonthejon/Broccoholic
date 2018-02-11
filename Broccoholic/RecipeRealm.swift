@@ -18,8 +18,8 @@ class RecipeRealm: Object {
 	let ingredients = List<IngredientRealm>()
 	let servings = RealmOptional<Int>()
 	let readyInMin = RealmOptional<Int>()
-	// NOT STORING INGREDIENTS FOR NOW
 	@objc dynamic var instructions: String? = nil
+	let detailedInstructions = List<String>()
 	@objc dynamic var isBookmarked = false
 	@objc dynamic var isComplete = false
 	
