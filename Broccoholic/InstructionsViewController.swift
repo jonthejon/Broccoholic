@@ -25,29 +25,78 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBAction func leftSwiped(_ sender: UISwipeGestureRecognizer) {
         
         print("leftSwiped")
-        
         if position == instructionsArray.index(of: instructionsArray.last!)! {
-            instructionsTextLabel.text = instructionsArray.first!
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.instructionsTextLabel.alpha = 0.0
+            
+            }, completion: {
+                (finished: Bool) -> Void in
+                
+                self.instructionsTextLabel.text = self.instructionsArray.first!
+                
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.instructionsTextLabel.alpha = 1.0
+                }, completion: nil)
+            })
+            
             position = 0
         } else {
+            
             position += 1
-        instructionsTextLabel.text = instructionsArray[position]
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.instructionsTextLabel.alpha = 0.0
+            }, completion: {
+                (finished: Bool) -> Void in
+        
+                self.instructionsTextLabel.text = self.instructionsArray[self.position]
+            
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.instructionsTextLabel.alpha = 1.0
+                }, completion: nil)
+            
+            })
+        
         }
     }
     
     @IBAction func rightSwiped(_ sender: UISwipeGestureRecognizer) {
         
         print("rightSwiped")
-        
         if position == instructionsArray.index(of: instructionsArray.first!)! {
-            instructionsTextLabel.text = instructionsArray.last!
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.instructionsTextLabel.alpha = 0.0
+            }, completion: {
+                (finished: Bool) -> Void in
+                
+            self.instructionsTextLabel.text = self.instructionsArray.last!
+            
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.instructionsTextLabel.alpha = 1.0
+                }, completion: nil)
+            })
+            
             position = instructionsArray.count-1
         } else {
+            
             position -= 1
-            instructionsTextLabel.text = instructionsArray[position]
+            
+            UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.instructionsTextLabel.alpha = 0.0
+            }, completion: {
+                (finished: Bool) -> Void in
+                
+                self.instructionsTextLabel.text = self.instructionsArray[self.position]
+                
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                    self.instructionsTextLabel.alpha = 1.0
+                }, completion: nil)
+            })
         }
-        
     }
+    
     
     
 }
