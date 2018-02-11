@@ -218,6 +218,14 @@
                                             <action selector="bookmarkButton:" destination="m2y-cb-KHw" eventType="touchUpInside" id="nmg-Rq-9Op"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGw-cq-rj6">
+                                        <rect key="frame" x="288" y="407" width="79" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Cook Mode"/>
+                                        <connections>
+                                            <segue destination="SlT-Qg-m40" kind="show" identifier="showInstructions" id="oVi-Cu-qAl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1oS-qf-5iC" firstAttribute="top" secondItem="Veb-mk-j75" secondAttribute="bottom" constant="13" id="0PR-bj-Wya"/>
@@ -276,6 +284,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvs-Bw-kei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1277.5999999999999" y="134.93253373313345"/>
+        </scene>
+        <!--Instructions View Controller-->
+        <scene sceneID="UC3-WH-vv1">
+            <objects>
+                <viewController id="SlT-Qg-m40" customClass="InstructionsViewController" customModule="Broccoholic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W8y-7n-Pll">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-yE-QbE">
+                                <rect key="frame" x="16" y="202" width="343" height="223"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Detailed Instructions">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="21"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="3" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hU2-xN-y7x" appends="YES" id="cOP-Rh-8xi"/>
+                                    <outletCollection property="gestureRecognizers" destination="wEk-GO-BDq" appends="YES" id="Hoh-zR-jt8"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.97133177518844604" green="0.9492766261100769" blue="0.90089565515518188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="bUj-05-E6V"/>
+                    </view>
+                    <connections>
+                        <outlet property="instructionsTextLabel" destination="xAL-yE-QbE" id="Imc-5W-ZjI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTi-QE-vmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="hU2-xN-y7x">
+                    <connections>
+                        <action selector="leftSwiped:" destination="SlT-Qg-m40" id="9UX-O7-jCl"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="wEk-GO-BDq">
+                    <connections>
+                        <action selector="rightSwiped:" destination="SlT-Qg-m40" id="ffF-E8-7ws"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2160.8000000000002" y="130.88455772113943"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a6f-yj-t26">

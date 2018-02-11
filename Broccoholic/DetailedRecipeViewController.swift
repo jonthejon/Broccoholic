@@ -73,7 +73,7 @@ class DetailedRecipeViewController: UIViewController {
             if recipe.isComplete {
                 self.updateUI()
             }
-			else {
+            else {
                 if let manager = self.optApiManager {
                     manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
                         OperationQueue.main.addOperation({
@@ -120,6 +120,17 @@ class DetailedRecipeViewController: UIViewController {
             self.directionsText.text = instructions
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showInstructions" {
+            let destination = segue.destination as! InstructionsViewController
+            if let recipe = optRecipe {
+                destination.instructionsArray = recipe.detailedInstructions!
+                
+            }
+        }
     }
     
 }
