@@ -295,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-yE-QbE">
-                                <rect key="frame" x="16" y="162" width="343" height="342"/>
+                                <rect key="frame" x="16" y="124" width="343" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <attributedString key="attributedText">
@@ -307,17 +307,26 @@
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="hU2-xN-y7x" appends="YES" id="cOP-Rh-8xi"/>
                                     <outletCollection property="gestureRecognizers" destination="wEk-GO-BDq" appends="YES" id="Hoh-zR-jt8"/>
                                 </connections>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Instructions Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ek3-Yg-HuT">
+                                <rect key="frame" x="16" y="86" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.96401220560073853" green="0.94953745603561401" blue="0.92547863721847534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="bUj-05-E6V"/>
                     </view>
                     <connections>
+                        <outlet property="instructionNumber" destination="Ek3-Yg-HuT" id="ZVH-BP-hNi"/>
                         <outlet property="instructionsTextLabel" destination="xAL-yE-QbE" id="Imc-5W-ZjI"/>
                     </connections>
                 </viewController>

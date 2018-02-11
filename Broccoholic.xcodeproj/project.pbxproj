@@ -21,6 +21,7 @@
 		7A4A203F202EBA44009B4B7C /* IngredientRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */; };
 		970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */; };
 		970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */; };
+		97CA29E12030E7DC00AC6307 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CA29E02030E7DC00AC6307 /* UIViewExtensions.swift */; };
 		97D6D4EA202FBAE3004885A1 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D6D4E9202FBAE3004885A1 /* InstructionsViewController.swift */; };
 		C673FEE62D725D790874F868 /* Pods_Broccoholic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRealm.swift; sourceTree = "<group>"; };
 		970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecipeViewController.swift; sourceTree = "<group>"; };
+		97CA29E02030E7DC00AC6307 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		97D6D4E9202FBAE3004885A1 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		BC551BA90BC87DE4C5147318 /* Pods-Broccoholic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Broccoholic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Broccoholic/Pods-Broccoholic.release.xcconfig"; sourceTree = "<group>"; };
 		DE54689A05351AE20AF3581C /* Pods_Broccoholic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Broccoholic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				970A2E28202B916A006C2980 /* RecipeCollectionViewCell.swift */,
 				970A2E2C202BA5A5006C2980 /* DetailedRecipeViewController.swift */,
 				97D6D4E9202FBAE3004885A1 /* InstructionsViewController.swift */,
+				97CA29E02030E7DC00AC6307 /* UIViewExtensions.swift */,
 				7A14C0C2202B930D006F7FA6 /* Recipe.swift */,
 				7A14C0B4202B8C78006F7FA6 /* Main.storyboard */,
 				7A14C0B7202B8C78006F7FA6 /* Assets.xcassets */,
@@ -252,6 +255,7 @@
 				970A2E2D202BA5A5006C2980 /* DetailedRecipeViewController.swift in Sources */,
 				7A4A203B202E7350009B4B7C /* RealmInterface.swift in Sources */,
 				7A4A203D202EB605009B4B7C /* Ingredient.swift in Sources */,
+				97CA29E12030E7DC00AC6307 /* UIViewExtensions.swift in Sources */,
 				970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */,
 				7A14C0B3202B8C78006F7FA6 /* SearchRecipesViewController.swift in Sources */,
 				7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */,
