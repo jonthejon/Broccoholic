@@ -48,6 +48,17 @@ class DetailedRecipeViewController: UIViewController {
 			}
 			
             displayBookmarkState()
+			let reminder = ReminderInterface(recipe: recipe, controller: self)
+//			if reminder.saveIngredients(ingredient: recipe.ingredients![0].name) {
+			let formatedIngredients = recipe.ingredients!.map({ (ingredient: Ingredient) -> String in
+				return ingredient.name
+			})
+			if reminder.saveIngredients(ingredients: formatedIngredients) {
+				let alert = UIAlertController(title: "Go vegan!", message: "The ingredients have been added to a shopping list in your Reminders!", preferredStyle: .alert)
+				let okAlert = UIAlertAction(title: "OK", style: .default, handler: nil)
+				alert.addAction(okAlert)
+				self.present(alert, animated: true, completion: nil)
+			}
         }
     }
     

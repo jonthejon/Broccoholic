@@ -172,8 +172,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	}
 	
     override func viewDidLayoutSubviews() {
-		print(#line, self.view.frame.size.width)
-		print(#line, self.recipeCollectionView.bounds.width)
+//		print(#line, self.view.frame.size.width)
+//		print(#line, self.recipeCollectionView.bounds.width)
 		if !self.flag {
 			self.flag = true
 			screenWidth = self.recipeCollectionView.frame.size.width
