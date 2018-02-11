@@ -19,6 +19,7 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
         super.viewDidLoad()
         
         instructionsTextLabel.text = instructionsArray[position]
+        self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
        
     }
     
@@ -30,6 +31,7 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
             self.instructionsTextLabel.fadeOut(completion: {
                 (finished: Bool) -> Void in
                 self.instructionsTextLabel.text = self.instructionsArray.first!
+                self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
                 self.instructionsTextLabel.fadeIn()
             })
             position = 0
@@ -41,6 +43,7 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
             self.instructionsTextLabel.fadeOut(completion: {
                 (finished: Bool) -> Void in
                 self.instructionsTextLabel.text = self.instructionsArray[self.position]
+                self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
                 self.instructionsTextLabel.fadeIn()
             })
         }
@@ -53,7 +56,8 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
             
             self.instructionsTextLabel.fadeOut(completion: {
                 (finished: Bool) -> Void in
-                 self.instructionsTextLabel.text = self.instructionsArray.last!
+                self.instructionsTextLabel.text = self.instructionsArray.last!
+                self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
                 self.instructionsTextLabel.fadeIn()
             })
             position = instructionsArray.count-1
@@ -65,6 +69,7 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
             self.instructionsTextLabel.fadeOut(completion: {
                 (finished: Bool) -> Void in
                 self.instructionsTextLabel.text = self.instructionsArray[self.position]
+                self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
                 self.instructionsTextLabel.fadeIn()
             })
         }
