@@ -17,8 +17,7 @@ class RecipeAPIManager {
 		self.searchParams = [
 			"diet":"vegan",
 			"instructionsRequired":"true",
-			"number":"16"
-//			"number":"30"
+			"number":"30"
 		]
 		self.detailsParams = [
 			"includeNutrition":"false"

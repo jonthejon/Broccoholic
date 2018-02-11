@@ -35,6 +35,13 @@ class RealmInterface {
 		recipeToSave.servings.value = recipe.servings
 		recipeToSave.readyInMin.value = recipe.readyInMin
 		recipeToSave.instructions = recipe.instructions
+		let detailedInstRealm = List<String>()
+		if let detailedInstructions = recipe.detailedInstructions {
+			for detaileInstruction in detailedInstructions {
+				detailedInstRealm.append(detaileInstruction)
+			}
+		}
+		recipeToSave.detailedInstructions.append(objectsIn: detailedInstRealm)
 		recipeToSave.isBookmarked = recipe.isBookmarked
 		recipeToSave.isComplete = recipe.isComplete
 		self.persistRecipeIntoRealm(recipe: recipeToSave)
@@ -105,6 +112,11 @@ class RealmInterface {
 			}
 			temp.ingredients = ingredients.count > 0 ? ingredients : nil
 			temp.instructions = recipe.instructions
+			var detailedInstructions = [String]()
+			for realmDetailInst in recipe.detailedInstructions {
+				detailedInstructions.append(realmDetailInst)
+			}
+			temp.detailedInstructions = detailedInstructions.count > 0 ? detailedInstructions : nil
 			temp.isBookmarked = recipe.isBookmarked
 			temp.isComplete = recipe.isComplete
 			recipes.append(temp)
