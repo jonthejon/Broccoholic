@@ -36,7 +36,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		self.map.setRegion(MKCoordinateRegionMake(currentLocation.coordinate, MKCoordinateSpanMake(0.06, 0.06)), animated: true)
 		let apiManager = RecipeAPIManager()
 		apiManager.fetchRestaurantsFromYelpApi(location: currentLocation.coordinate, radius: 10000) { (restaurants:[Restaurant]) in
-			<#code#>
+			OperationQueue.main.addOperation({
+				self.restaurants = restaurants
+				self.map.addAnnotations(self.restaurants)
+				self.map.showAnnotations(self.restaurants, animated: true)
+			})
 		}
 //		[NetworkManager yelpSearchWithLocation:currentLocation.coordinate completionHandler:^(NSArray<Cafe *> * cafes) {
 //			self.cafes = cafes;
