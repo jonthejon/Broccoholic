@@ -36,10 +36,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         infoView.layer.shadowColor = UIColor.darkGray.cgColor
         
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
