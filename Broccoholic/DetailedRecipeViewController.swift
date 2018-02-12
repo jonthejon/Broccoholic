@@ -82,7 +82,7 @@ class DetailedRecipeViewController: UIViewController {
     
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
         navigationItem.title = "Broccoholic"
-        
+      
         if let recipe = optRecipe {
             recipeNameLabel.text = recipe.title
             recipeImageView.image = recipe.image

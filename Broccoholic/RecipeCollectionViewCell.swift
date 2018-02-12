@@ -24,6 +24,7 @@ class RecipeCollectionViewCell: UICollectionViewCell {
             recipeImageView.image = recipe.image
             displayBookmarkState()
             self.backgroundColor = .clear
+        
         }
     }
 	var rootController: SearchRecipesViewController!

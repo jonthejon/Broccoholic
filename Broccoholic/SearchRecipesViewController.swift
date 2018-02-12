@@ -64,6 +64,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
         self.navigationController?.navigationItem.backBarButtonItem?.title = " "
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
+        
+        
 		
 		// THIS IS THE FAKE DATA INSERTION PART
 //        let rec1 = Recipe(id: 1, title: "Broccoli Pasta", imageUrl: "fakeURl")
@@ -181,6 +183,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         self.recipeCollectionView.reloadData()
+        
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

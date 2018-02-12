@@ -36,6 +36,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         infoView.layer.shadowColor = UIColor.darkGray.cgColor
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -65,14 +69,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //	func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
 //		self.selectedRestaurant = view.annotation as? Restaurant
 //	}
-	
+    
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		self.selectedRestaurant = view.annotation as? Restaurant
-		self.infoView.isHidden = false
-        
+        self.infoView.isHidden = false
         
 		self.handleNewRestaurantClick()
 	}
+    
+    
 	
 	private func handleNewRestaurantClick() {
 		if let restaurant = self.selectedRestaurant {
@@ -84,7 +89,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	}
 	
 	func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-		self.infoView.isHidden = true
+        self.infoView.isHidden = true
 	}
 
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
