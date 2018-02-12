@@ -172,18 +172,9 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	}
 	
     override func viewDidLayoutSubviews() {
-//		print(#line, self.view.frame.size.width)
-//		print(#line, self.recipeCollectionView.bounds.width)
 		if !self.flag {
 			self.flag = true
 			screenWidth = self.recipeCollectionView.frame.size.width
-			
-			
-//			recipeCollectionView.visibleCells.forEach { (cell: UICollectionViewCell) in
-//				let cell = cell as! RecipeCollectionViewCell
-//				cell.prepareCircle()
-//			}
-			
 		}
     }
     
@@ -199,13 +190,7 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCollectionViewCell
 		cell.itemSize = (self.recipeCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize
-//		cell.prepareCircle()
         let recipe = self.data[indexPath.item]
-		
-		
-//		cell.recipeImageView.image = nil
-//		cell.clearCell()
-		
 		cell.rootController = self
 		if let _ = recipe.image {
 			cell.recipe = recipe
@@ -217,7 +202,6 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 //            OperationQueue.main.addOperation({
 //                recipe.image = image
 //                cell.recipe = recipe
-////                cell.recipeImageView.image = image
 //            })
 //        }
 

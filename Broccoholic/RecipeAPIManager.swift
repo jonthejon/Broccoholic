@@ -1,4 +1,5 @@
 import UIKit
+import CoreLocation
 
 class RecipeAPIManager {
 	
@@ -33,6 +34,54 @@ class RecipeAPIManager {
 	
 	enum RecipeApiError: Error {
 		case UndefinedServerError, UndefinedResponse, InvalidStatusCode, InvalidData, InvalidJSONFormat, UnableToParseJSON, InvalidURL, UnableToParseImage
+	}
+	
+	func fetchRestaurantsFromYelpApi(location: CLLocationCoordinate2D, radius: Int, callback:@escaping ([Restaurant])->()) {
+		guard let url = self.generateYelpUrl(location: location, radius: radius) else {
+			print(RecipeApiError.InvalidURL)
+			return
+		}
+		let configuration = URLSessionConfiguration.default
+		configuration.waitsForConnectivity = true
+		let session = URLSession(configuration: configuration)
+		var request = URLRequest(url: url)
+		request.addValue("Bearer fm2pDRqlIs2_05-dm6N8gxenY_Ki7IdIt-iK2RY-SRJdTT3lRGHCSlzOROO2Gr1I-JKSHsNJv-I7QcR3CILMHJZZcpBMM1azWq65Mlp_T-V7iLQtGsOc-VsWWjN3WnYx", forHTTPHeaderField: "Authorization")
+		let dataTask = session.dataTask(with: request) { (data:Data?, response:URLResponse?, error:Error?) in
+			if error != nil {
+				print(RecipeApiError.UndefinedServerError)
+				return
+			}
+			guard let resp = response else {
+				print(RecipeApiError.UndefinedResponse)
+				return
+			}
+			if let statusCode = (resp as? HTTPURLResponse)?.statusCode {
+				if statusCode != 200 {
+					print(RecipeApiError.InvalidStatusCode)
+					return
+				}
+			}
+			guard let data = data else {
+				print(RecipeApiError.InvalidData)
+				return
+			}
+			var resultArr:[Restaurant] = [Restaurant]()
+			do {
+				let json = try JSONSerialization.jsonObject(with: data, options: [])
+				guard let restaurantsArr:[[String:Any]] = (json as! [String:Any])["businesses"] as? [[String:Any]] else {
+					return
+				}
+				for restaurant in restaurantsArr {
+					resultArr.append(Restaurant(data: restaurant))
+				}
+			} catch {
+				print(RecipeApiError.UnableToParseJSON)
+				return
+			}
+			callback(resultArr)
+			session.invalidateAndCancel()
+		}
+		dataTask.resume()
 	}
 	
 	func fetchRecipesFromApi(queryParameter:String?, callback:@escaping ([Recipe])->()) {
@@ -234,6 +283,19 @@ class RecipeAPIManager {
 		}
 		queryItemsArr.append(URLQueryItem(name: self.idParameterName, value: String(id)))
 		guard var component = URLComponents(string: self.detailEndPoint) else {
+			return nil
+		}
+		component.queryItems = queryItemsArr
+		return component.url
+	}
+	
+	private func generateYelpUrl(location: CLLocationCoordinate2D, radius:Int) -> URL? {
+		var queryItemsArr = [URLQueryItem]()
+		queryItemsArr.append(URLQueryItem(name: "latitude", value: String(location.latitude)))
+		queryItemsArr.append(URLQueryItem(name: "longitude", value: String(location.longitude)))
+		queryItemsArr.append(URLQueryItem(name: "radius", value: String(radius)))
+		queryItemsArr.append(URLQueryItem(name: "categories", value: "vegan"))
+		guard var component = URLComponents(string: "https://api.yelp.com/v3/businesses/search") else {
 			return nil
 		}
 		component.queryItems = queryItemsArr

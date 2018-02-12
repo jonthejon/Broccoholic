@@ -15,6 +15,8 @@
 		7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14C0C2202B930D006F7FA6 /* Recipe.swift */; };
 		7A14C0C5202B9892006F7FA6 /* RecipeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A14C0C4202B9892006F7FA6 /* RecipeAPIManager.swift */; };
 		7A31ADC4202FF05A00266C49 /* ReminderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31ADC3202FF05A00266C49 /* ReminderInterface.swift */; };
+		7A31ADC62030F47300266C49 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31ADC52030F47300266C49 /* MapViewController.swift */; };
+		7A31ADC82030F98200266C49 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31ADC72030F98200266C49 /* Restaurant.swift */; };
 		7A4A2039202E71AA009B4B7C /* RecipeRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A2038202E71AA009B4B7C /* RecipeRealm.swift */; };
 		7A4A203B202E7350009B4B7C /* RealmInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203A202E7350009B4B7C /* RealmInterface.swift */; };
 		7A4A203D202EB605009B4B7C /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4A203C202EB605009B4B7C /* Ingredient.swift */; };
@@ -38,6 +40,8 @@
 		7A14C0C2202B930D006F7FA6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		7A14C0C4202B9892006F7FA6 /* RecipeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPIManager.swift; sourceTree = "<group>"; };
 		7A31ADC3202FF05A00266C49 /* ReminderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderInterface.swift; sourceTree = "<group>"; };
+		7A31ADC52030F47300266C49 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7A31ADC72030F98200266C49 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		7A4A2038202E71AA009B4B7C /* RecipeRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRealm.swift; sourceTree = "<group>"; };
 		7A4A203A202E7350009B4B7C /* RealmInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInterface.swift; sourceTree = "<group>"; };
 		7A4A203C202EB605009B4B7C /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
@@ -74,8 +78,6 @@
 		7A14C0A4202B8C78006F7FA6 = {
 			isa = PBXGroup;
 			children = (
-				7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */,
-				7A4A203C202EB605009B4B7C /* Ingredient.swift */,
 				7A14C0AF202B8C78006F7FA6 /* Broccoholic */,
 				7A14C0AE202B8C78006F7FA6 /* Products */,
 				5B9C16132633079D37B1E28C /* Pods */,
@@ -94,9 +96,12 @@
 		7A14C0AF202B8C78006F7FA6 /* Broccoholic */ = {
 			isa = PBXGroup;
 			children = (
+				7A4A203E202EBA44009B4B7C /* IngredientRealm.swift */,
+				7A4A203C202EB605009B4B7C /* Ingredient.swift */,
 				7A14C0C4202B9892006F7FA6 /* RecipeAPIManager.swift */,
 				7A14C0B0202B8C78006F7FA6 /* AppDelegate.swift */,
 				7A14C0B2202B8C78006F7FA6 /* SearchRecipesViewController.swift */,
+				7A31ADC52030F47300266C49 /* MapViewController.swift */,
 				7A4A2038202E71AA009B4B7C /* RecipeRealm.swift */,
 				7A4A203A202E7350009B4B7C /* RealmInterface.swift */,
 				7A31ADC3202FF05A00266C49 /* ReminderInterface.swift */,
@@ -106,6 +111,7 @@
 				97CA29E02030E7DC00AC6307 /* UIViewExtensions.swift */,
 				7A14C0C2202B930D006F7FA6 /* Recipe.swift */,
 				7A14C0B4202B8C78006F7FA6 /* Main.storyboard */,
+				7A31ADC72030F98200266C49 /* Restaurant.swift */,
 				7A14C0B7202B8C78006F7FA6 /* Assets.xcassets */,
 				7A14C0B9202B8C78006F7FA6 /* LaunchScreen.storyboard */,
 				7A14C0BC202B8C78006F7FA6 /* Info.plist */,
@@ -259,9 +265,11 @@
 				970A2E29202B916A006C2980 /* RecipeCollectionViewCell.swift in Sources */,
 				7A14C0B3202B8C78006F7FA6 /* SearchRecipesViewController.swift in Sources */,
 				7A14C0C3202B930D006F7FA6 /* Recipe.swift in Sources */,
+				7A31ADC62030F47300266C49 /* MapViewController.swift in Sources */,
 				7A4A203F202EBA44009B4B7C /* IngredientRealm.swift in Sources */,
 				7A4A2039202E71AA009B4B7C /* RecipeRealm.swift in Sources */,
 				7A14C0C5202B9892006F7FA6 /* RecipeAPIManager.swift in Sources */,
+				7A31ADC82030F98200266C49 /* Restaurant.swift in Sources */,
 				7A31ADC4202FF05A00266C49 /* ReminderInterface.swift in Sources */,
 				97D6D4EA202FBAE3004885A1 /* InstructionsViewController.swift in Sources */,
 				7A14C0B1202B8C78006F7FA6 /* AppDelegate.swift in Sources */,

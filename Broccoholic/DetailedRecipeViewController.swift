@@ -50,7 +50,7 @@ class DetailedRecipeViewController: UIViewController {
             displayBookmarkState()
 			let reminder = ReminderInterface(recipe: recipe, controller: self)
 			let formatedIngredients = recipe.ingredients!.map({ (ingredient: Ingredient) -> String in
-				return ingredient.name
+				return "\(ingredient.name) - \(ingredient.quantity) \(ingredient.unit)"
 			})
 			if reminder.saveIngredients(ingredients: formatedIngredients) {
 				let alert = UIAlertController(title: "Go vegan!", message: "The ingredients have been added to a shopping list in your Reminders!", preferredStyle: .alert)
@@ -112,7 +112,7 @@ class DetailedRecipeViewController: UIViewController {
                 let name = tuple.name
                 let amount = tuple.quantity
                 let unit = tuple.unit
-                self.ingredientsLabel.text?.append("\(name), quantity:\(amount), unit:\(unit)\n")
+                self.ingredientsLabel.text?.append("\(name) - \(amount) \(unit)\n")
             }
         }
         
