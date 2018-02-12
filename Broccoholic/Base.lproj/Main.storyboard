@@ -271,6 +271,9 @@
                                             <constraint firstAttribute="height" constant="38" id="oY4-2l-zka"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="icons8-add-list-100"/>
+                                        <connections>
+                                            <action selector="handleReminderClick:" destination="m2y-cb-KHw" eventType="touchUpInside" id="9ZN-ql-xxP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93758076429367065" green="0.90580481290817261" blue="0.8575863242149353" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

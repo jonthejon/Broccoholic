@@ -48,6 +48,12 @@ class DetailedRecipeViewController: UIViewController {
 			}
 			
             displayBookmarkState()
+        }
+    }
+	
+	@IBAction func handleReminderClick(_ sender: UIButton)
+	{
+		if let recipe = self.optRecipe {
 			let reminder = ReminderInterface(recipe: recipe, controller: self)
 			let formatedIngredients = recipe.ingredients!.map({ (ingredient: Ingredient) -> String in
 				return "\(ingredient.name) - \(ingredient.quantity) \(ingredient.unit)"
@@ -58,10 +64,10 @@ class DetailedRecipeViewController: UIViewController {
 				alert.addAction(okAlert)
 				self.present(alert, animated: true, completion: nil)
 			}
-        }
-    }
-    
-    func displayBookmarkState() {
+		}
+	}
+	
+	func displayBookmarkState() {
         if let recipe = optRecipe {
             if recipe.isBookmarked {
                 bookmarkOutlet.setImage(#imageLiteral(resourceName: "hearts-on"), for: .normal)
@@ -83,22 +89,22 @@ class DetailedRecipeViewController: UIViewController {
             if recipe.isComplete {
                 self.updateUI()
             }
-//            else {
-//                if let manager = self.optApiManager {
-//                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
-//                        OperationQueue.main.addOperation({
-//                            recipe.servings = result.servings
-//                            recipe.readyInMin = result.readyInMin
-//                            recipe.instructions = result.instructions
-//                            recipe.ingredients = result.ingredients
-//                            recipe.isComplete = result.isComplete
-//
-//                            self.updateUI()
-//
-//                        })
-//                    })
-//                }
-//            }
+            else {
+                if let manager = self.optApiManager {
+                    manager.fetchRecipeDetailFromApi(recipe: recipe, callback: { (result:Recipe) in
+                        OperationQueue.main.addOperation({
+                            recipe.servings = result.servings
+                            recipe.readyInMin = result.readyInMin
+                            recipe.instructions = result.instructions
+                            recipe.ingredients = result.ingredients
+                            recipe.isComplete = result.isComplete
+
+                            self.updateUI()
+
+                        })
+                    })
+                }
+            }
         }
     }
     
