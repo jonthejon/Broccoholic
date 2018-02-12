@@ -43,7 +43,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 			self.bookmarkflag = false
 			self.data = self.cachedData
 			self.cachedData.removeAll()
-			self.recipeCollectionView.reloadData()
+			self.updateBookmarkInData()
+//			self.recipeCollectionView.reloadData()
 		}
     }
 	
@@ -150,6 +151,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		for recipe in self.data {
 			if savedIds.contains(recipe.id) {
 				recipe.isBookmarked = true
+			} else {
+				recipe.isBookmarked = false
 			}
 		}
 		self.recipeCollectionView.reloadData()
