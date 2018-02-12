@@ -12,13 +12,15 @@ class InstructionsViewController: UIViewController, UIGestureRecognizerDelegate 
 
     @IBOutlet weak var instructionsTextLabel: UILabel!
     @IBOutlet weak var instructionNumber: UILabel!
+	var recipe: Recipe!
     var instructionsArray: [String]!
     var position = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        instructionsTextLabel.text = instructionsArray[position]
+		
+		instructionsTextLabel.text = self.recipe.detailedInstructions![position]
+//        instructionsTextLabel.text = instructionsArray[position]
         self.instructionNumber.text = "Directions: \(self.position+1) / \(self.instructionsArray.count)"
        
     }

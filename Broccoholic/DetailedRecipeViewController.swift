@@ -138,6 +138,7 @@ class DetailedRecipeViewController: UIViewController {
             let destination = segue.destination as! InstructionsViewController
             if let recipe = optRecipe {
                 destination.instructionsArray = recipe.detailedInstructions!
+				destination.recipe = recipe
                 
             }
         }
