@@ -10,11 +10,17 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+	@IBOutlet weak var infoView: UIView!
+	@IBOutlet weak var phoneNumber: UILabel!
+	@IBOutlet weak var price: UILabel!
+	@IBOutlet weak var rating: UILabel!
+	@IBOutlet weak var restaurantName: UILabel!
 	@IBOutlet weak var map: MKMapView!
 	let locationManager = CLLocationManager()
 	var restaurants:[Restaurant] = [Restaurant]()
+	var selectedRestaurant: Restaurant?
 	
 	
 	override func viewDidLoad() {
@@ -48,6 +54,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 //			[self.mapView addAnnotations:self.cafes];
 //			[self.mapView showAnnotations:self.cafes animated:YES];
 //			}];
+	}
+	
+//	func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+//		self.selectedRestaurant = view.annotation as? Restaurant
+//	}
+	
+	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+		self.selectedRestaurant = view.annotation as? Restaurant
+		self.infoView.isHidden = false
+		self.handleNewRestaurantClick()
+	}
+	
+	private func handleNewRestaurantClick() {
+		if let restaurant = self.selectedRestaurant {
+			self.restaurantName.text = restaurant.title
+			self.rating.text = String(restaurant.rating)
+			self.phoneNumber.text = restaurant.phone
+			self.price.text = restaurant.price
+		}
+	}
+	
+	func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+		self.infoView.isHidden = true
 	}
 
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
