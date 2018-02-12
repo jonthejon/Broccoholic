@@ -24,7 +24,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var viewState = false
 	
-	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		self.locationManager.requestWhenInUseAuthorization()
