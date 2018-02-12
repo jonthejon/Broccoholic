@@ -205,8 +205,12 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		// DONT DELETE LINES BELOW//
         self.apiManager.fetchImageWithUrl(url: recipe.imageUrl) { (image:UIImage?) in
             OperationQueue.main.addOperation({
-                recipe.image = image
-                cell.recipe = recipe
+				if let validImage = image {
+					recipe.image = validImage
+				} else {
+					recipe.image = UIImage(named: "Icon_flat_circle_food03-512.png")
+				}
+				cell.recipe = recipe
             })
         }
 

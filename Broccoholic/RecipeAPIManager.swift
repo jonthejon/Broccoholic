@@ -132,7 +132,14 @@ class RecipeAPIManager {
 					if let imageEndUrl = recipeDict["image"] as? String {
 						imageUrl = self.imageEndPoint + imageEndUrl
 					} else {imageUrl="Undefine image URL"}
-					recipesArr.append(Recipe(id: id, title: title, imageUrl: imageUrl))
+					// TO DELETE
+//					if id == 698704 {
+//						recipesArr.append(Recipe(id: id, title: title, imageUrl: "dummyvalue"))
+//					}
+//					else {
+						// END TO DELETE
+						recipesArr.append(Recipe(id: id, title: title, imageUrl: imageUrl))
+//					} // ALSO HERE
 				}
 			} catch {
 				print(RecipeApiError.UnableToParseJSON)
@@ -226,6 +233,11 @@ class RecipeAPIManager {
 			callback(nil)
 			return
 		}
+		// to delete later
+		if url == "https://spoonacular.com/recipeImages/black-eyed-pea-dip-698704.jpg" {
+			callback(nil)
+			return
+		} // end of to delete
 		let downloadTask = session.downloadTask(with: imageUrl) { (url:URL?, response:URLResponse?, error:Error?) in
 			if error != nil {
 				print(RecipeApiError.UndefinedServerError)
