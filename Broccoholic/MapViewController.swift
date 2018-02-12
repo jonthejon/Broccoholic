@@ -21,6 +21,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	let locationManager = CLLocationManager()
 	var restaurants:[Restaurant] = [Restaurant]()
 	var selectedRestaurant: Restaurant?
+    
+    var viewState = false
 	
 	
 	override func viewDidLoad() {
@@ -29,6 +31,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		self.map.showsUserLocation = true
 		self.locationManager.delegate = self
 		self.locationManager.startUpdatingLocation()
+        
+        
         
         infoView.layer.shadowOpacity = 0.7
         infoView.layer.shadowOffset = CGSize(width: 3, height: -10)
@@ -39,6 +43,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidAppear(_ animated: Bool) {
         
+        infoView.frame.origin.y += 130
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,10 +77,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		self.selectedRestaurant = view.annotation as? Restaurant
-        self.infoView.isHidden = false
-        
-		self.handleNewRestaurantClick()
-	}
+        //        self.infoView.isHidden = false
+        if viewState == false {
+            UIView.animate(withDuration: 0.35) {
+                self.infoView.frame.origin.y -= 130
+            }
+            viewState = true
+        }
+        self.handleNewRestaurantClick()
+    }
     
     
 	
@@ -89,7 +99,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	}
 	
 	func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        self.infoView.isHidden = true
+//        self.infoView.isHidden = true
+        
+        if viewState == true {
+
+            UIView.animate(withDuration: 0.35) {
+                self.infoView.frame.origin.y += 130
+            }
+            viewState = false
+        }
 	}
 
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
