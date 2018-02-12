@@ -29,6 +29,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 		self.map.showsUserLocation = true
 		self.locationManager.delegate = self
 		self.locationManager.startUpdatingLocation()
+        
+        infoView.layer.shadowOpacity = 0.7
+        infoView.layer.shadowOffset = CGSize(width: 3, height: -10)
+        infoView.layer.shadowRadius = 15.0
+        infoView.layer.shadowColor = UIColor.darkGray.cgColor
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +69,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 	func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 		self.selectedRestaurant = view.annotation as? Restaurant
 		self.infoView.isHidden = false
+        
+        
 		self.handleNewRestaurantClick()
 	}
 	

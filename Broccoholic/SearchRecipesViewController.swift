@@ -64,7 +64,6 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
         self.navigationController?.navigationItem.backBarButtonItem?.title = " "
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "Futura", size: 17)!]
-        self.title = "Broccoholic"
 		
 		// THIS IS THE FAKE DATA INSERTION PART
 //        let rec1 = Recipe(id: 1, title: "Broccoli Pasta", imageUrl: "fakeURl")
@@ -141,7 +140,6 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
             self.data = resultArr
             OperationQueue.main.addOperation({
                 self.updateBookmarkInData()
-//                self.recipeCollectionView.reloadData()
             })
         }
     }

@@ -18,10 +18,6 @@ class RecipeCollectionViewCell: UICollectionViewCell {
 		}
 	}
 
-//	override func layoutSubviews() {
-//		prepareCircle()
-//	}
-
     var recipe: Recipe! {
         didSet {
             recipeNameLabel.text = recipe.title
@@ -53,10 +49,6 @@ class RecipeCollectionViewCell: UICollectionViewCell {
         
         bookmarkButton.isHidden = false
         self.bookmarkButton.transform = CGAffineTransform(scaleX: 0, y: 0)
-        
-//        UIView.animate(withDuration: 0.35, delay: 0, options: [], animations: { () -> Void in
-//            self.bookmarkButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-//        })
         
         UIView.animate(withDuration: 0.35,
                        delay: 0,
