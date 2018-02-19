@@ -9,11 +9,10 @@ Broccoholic was designed to help you go vegan! It helps you by providing with yu
 
 ## Screenshots
 
-!["Screenshot of Home Page"](https://raw.githubusercontent.com/hounslow/final-lhl-project/master/docs/homepage.png)
-!["Screenshot of Filters Page"](https://raw.githubusercontent.com/hounslow/final-lhl-project/master/docs/filters.png)
-!["Screenshot of Map"](https://raw.githubusercontent.com/hounslow/final-lhl-project/master/docs/map.png)
-!["Screenshot of Favorites Page"](https://raw.githubusercontent.com/hounslow/final-lhl-project/master/docs/favorites.png)
-!["Screenshot of Favorites Dropdown"](https://raw.githubusercontent.com/hounslow/final-lhl-project/master/docs/filters-dropdown.png)
+!["Search for recipes by ingredients"](https://github.com/jonthejon/Broccoholic/blob/master/Screenshots/recipe_search.png)
+!["Ingredients and instructions for each recipe"](https://github.com/jonthejon/Broccoholic/blob/master/Screenshots/recipe_details.png)
+!["Cook mode - instructions step by step"](https://github.com/jonthejon/Broccoholic/blob/master/Screenshots/cook_mode.png)
+!["Vegan restaurants near me"](https://github.com/jonthejon/Broccoholic/blob/master/Screenshots/restaurants_near_me.png)
 
 ## Getting Started
 
