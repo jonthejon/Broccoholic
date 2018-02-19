@@ -466,7 +466,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3q-Du-i11">
-                                        <rect key="frame" x="140" y="18" width="52" height="24"/>
+                                        <rect key="frame" x="141" y="18" width="50" height="24"/>
                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -483,23 +483,20 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cwp-Ad-L0V" secondAttribute="trailing" constant="93" id="0fw-eQ-lhV"/>
                                     <constraint firstItem="cwp-Ad-L0V" firstAttribute="top" secondItem="fFV-Bu-Qkw" secondAttribute="top" constant="5" id="1L2-ZY-pCg"/>
-                                    <constraint firstItem="f3q-Du-i11" firstAttribute="leading" secondItem="ood-0m-Fyt" secondAttribute="trailing" id="3U5-63-BwF"/>
+                                    <constraint firstItem="f3q-Du-i11" firstAttribute="leading" secondItem="ood-0m-Fyt" secondAttribute="trailing" constant="1" id="3U5-63-BwF"/>
                                     <constraint firstAttribute="bottom" secondItem="cwp-Ad-L0V" secondAttribute="bottom" constant="5" id="534-lm-JS8"/>
                                     <constraint firstAttribute="bottom" secondItem="f3q-Du-i11" secondAttribute="bottom" constant="18" id="87S-Ai-LiJ"/>
-                                    <constraint firstItem="cwp-Ad-L0V" firstAttribute="leading" secondItem="f3q-Du-i11" secondAttribute="trailing" id="CeE-1n-PkI"/>
+                                    <constraint firstItem="cwp-Ad-L0V" firstAttribute="leading" secondItem="f3q-Du-i11" secondAttribute="trailing" constant="1" id="CeE-1n-PkI"/>
+                                    <constraint firstAttribute="height" constant="60" id="D59-qE-8l6"/>
                                     <constraint firstAttribute="bottom" secondItem="ood-0m-Fyt" secondAttribute="bottom" constant="5" id="bFG-Hf-k57"/>
                                     <constraint firstItem="ood-0m-Fyt" firstAttribute="top" secondItem="fFV-Bu-Qkw" secondAttribute="top" constant="5" id="bvC-Um-bh4"/>
                                     <constraint firstItem="f3q-Du-i11" firstAttribute="top" secondItem="fFV-Bu-Qkw" secondAttribute="top" constant="18" id="g44-sH-LNi"/>
                                     <constraint firstItem="ood-0m-Fyt" firstAttribute="leading" secondItem="fFV-Bu-Qkw" secondAttribute="leading" constant="90" id="mdE-3F-bvR"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-yE-QbE">
-                                <rect key="frame" x="16" y="165.66666666666663" width="343" height="355"/>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAL-yE-QbE">
+                                <rect key="frame" x="16" y="166" width="343" height="355"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="URY-N3-zYq"/>
-                                    <constraint firstAttribute="height" constant="355" id="W0u-MF-neV"/>
-                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment content="Detailed Instructions">
                                         <attributes>
@@ -519,17 +516,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96401220560073853" green="0.94953745603561401" blue="0.92547863721847534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="xAL-yE-QbE" firstAttribute="leading" secondItem="bUj-05-E6V" secondAttribute="leading" constant="16" id="3em-n1-URr"/>
                             <constraint firstItem="xAL-yE-QbE" firstAttribute="centerX" secondItem="W8y-7n-Pll" secondAttribute="centerX" id="4fj-EQ-DL1"/>
                             <constraint firstItem="fFV-Bu-Qkw" firstAttribute="leading" secondItem="bUj-05-E6V" secondAttribute="leading" constant="20" id="AZB-Ox-6pE"/>
+                            <constraint firstItem="fFV-Bu-Qkw" firstAttribute="top" secondItem="xAL-yE-QbE" secondAttribute="bottom" constant="64.333333333333371" id="C4a-vd-lUe"/>
                             <constraint firstItem="bUj-05-E6V" firstAttribute="trailing" secondItem="fFV-Bu-Qkw" secondAttribute="trailing" constant="20" id="GZi-oc-bvA"/>
                             <constraint firstItem="bUj-05-E6V" firstAttribute="bottom" secondItem="fFV-Bu-Qkw" secondAttribute="bottom" constant="84" id="IH2-us-Gc4"/>
                             <constraint firstItem="bUj-05-E6V" firstAttribute="trailing" secondItem="Ek3-Yg-HuT" secondAttribute="trailing" constant="16" id="IUL-yQ-fxP"/>
                             <constraint firstItem="Ek3-Yg-HuT" firstAttribute="top" secondItem="bUj-05-E6V" secondAttribute="top" constant="22" id="Kaq-MQ-HCg"/>
                             <constraint firstItem="Ek3-Yg-HuT" firstAttribute="leading" secondItem="bUj-05-E6V" secondAttribute="leading" constant="16" id="fgk-bH-yKM"/>
                             <constraint firstItem="xAL-yE-QbE" firstAttribute="top" secondItem="Ek3-Yg-HuT" secondAttribute="bottom" constant="28" id="nCe-fd-mQ3"/>
-                            <constraint firstItem="bUj-05-E6V" firstAttribute="trailing" secondItem="xAL-yE-QbE" secondAttribute="trailing" constant="16" id="rjE-qV-akH"/>
-                            <constraint firstItem="fFV-Bu-Qkw" firstAttribute="leading" secondItem="xAL-yE-QbE" secondAttribute="trailing" constant="-339" id="vwv-g1-04w"/>
+                            <constraint firstItem="bUj-05-E6V" firstAttribute="trailing" secondItem="xAL-yE-QbE" secondAttribute="trailing" constant="16" id="se0-gx-fYA"/>
+                            <constraint firstItem="xAL-yE-QbE" firstAttribute="leading" secondItem="bUj-05-E6V" secondAttribute="leading" constant="16" id="ueU-vt-YE0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bUj-05-E6V"/>
                     </view>
@@ -550,7 +547,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2172" y="-123"/>
+            <point key="canvasLocation" x="2172" y="-123.39901477832512"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="a6f-yj-t26">

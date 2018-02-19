@@ -16,7 +16,6 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBOutlet weak var recipeCollectionView: UICollectionView!
     @IBOutlet weak var recipeSearchBar: UISearchBar!
-
     
     var data = [Recipe]()
 	var cachedData = [Recipe]()
@@ -33,13 +32,16 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 	}
     
     @IBAction func bookmarkButtonTapped(_ sender: UIBarButtonItem) {
+        
 		if !self.bookmarkflag {
+            
 			self.bookmarkflag = true
 			self.cachedData = data
 			let savedRecipes = realm.fetchSavedRecipes()
 			self.data = savedRecipes
 			self.recipeCollectionView.reloadData()
 		} else {
+    
 			self.bookmarkflag = false
 			self.data = self.cachedData
 			self.cachedData.removeAll()
@@ -55,11 +57,8 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
 		}
 	}
     
-    
-    
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
         
         recipeCollectionView.backgroundView?.backgroundColor = UIColor.clear
         self.navigationController?.navigationItem.backBarButtonItem?.title = " "
@@ -183,10 +182,9 @@ class SearchRecipesViewController: UIViewController, UICollectionViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         self.recipeCollectionView.reloadData()
-        
-        
     }
 
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
